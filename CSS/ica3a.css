@@ -15,10 +15,14 @@ body {
     font-size: 1.3em;
   }
   
-  p,ul,ol,dl,address {
+  font {
     font-size: 1.1em;
   }
   
-  p, li, dd, dt, address {
+  text {
     line-height: 1.5;
+  }
+
+  s {
+    text-indent: 50px;
   }
