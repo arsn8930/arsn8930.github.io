@@ -11,14 +11,19 @@ nav ul li {
 
 }
 nav ul li a{
-    color: #6191ea;
+    color: #0650db;
     text-decoration: none;
     font-size: 18px;
     position: relative;
 }
 section{
     color: #6191ea;
+    margin: 10px 20px;
 }
 p{
     color: black;
+}
+h1{
+    text-decoration-line: underline;
+    text-decoration-color: #0650db;
 }
