@@ -5,7 +5,7 @@ body {
   }
   
   html {
-    font-size:	0.625em;
+    font-size: 1em;
     background-color: #ccccccf8;
   }
 
@@ -27,8 +27,8 @@ body {
   }
 
   .card header h2{
-    font-size: 1.2500em;
-    line-height: 1.875em;
+    font-size: 2em;
+    line-height: 1.5em;
   }
 
   .card footer{
@@ -37,13 +37,13 @@ body {
   }
 
   .card footer p{
-    font-size: 0.9375em;
-    line-height: 1.875em;
+    font-size: 1.5em;
+    line-height: 1.5em;
   }
 
   .card header, .card footer{
-    height: 1.875em;
-    padding: 	0.625em;
+    height: 3em;
+    padding: 1em;
   }
 
   /* main contents */
@@ -53,14 +53,14 @@ body {
   }
 
   .card article{
-    height: 7.5em;
+    height: 12em;
     background-color: #07000043;
   }
 
   .card article p{
     color: white;
-    padding: 0.625em;
-    line-height: 1.3;
+    padding: 1em;
+    line-height: 1.3em;
   }
 
   h2, p{
@@ -87,8 +87,8 @@ body {
   }
   
   .Hugh header h2{
-  font-size: 1.2500em;
-  line-height: 1.875em;
+  font-size: 2em;
+  line-height: 1.5em;
   color: rgb(0, 0, 0);
   }
   
@@ -98,14 +98,14 @@ body {
   }
   
   .Hugh footer p{
-  font-size: 0.9375em;
-  line-height: 1.875em;
+  font-size: 1.5em;
+  line-height: 1.5em;
   color: rgb(91, 16, 101);
   }
   
   .Hugh header, .Hugh footer{
-  height: 1.875em;
-  padding: 0.625em;
+  height: 3em;
+  padding: 1em;
   }
   
   /* main contents */
@@ -115,12 +115,12 @@ body {
   }
   
   .Hugh article{
-  height: 7.5em;
+  height: 12em;
   background-color: #07000043;
   }
   
   .Hugh article p{
   color: rgb(12, 117, 255);
-  padding: 0.625em;
-  line-height: 1.3;
+  padding: 1em;
+  line-height: 1.3em;
   }
