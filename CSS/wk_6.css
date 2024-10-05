@@ -1,0 +1,79 @@
+.background-img{
+    background-image: url(/img/Matty-Beniers-Seattle-Kraken-NHL-hockey-action-against-San-Jose-Sharks-2022.webp);
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+}
+
+.box-1{
+    display: flex;
+    position: relative; /*helps move box freely without moving other objects and such*/
+    height: 4em;
+    width: 21em;
+    background-color: rgb(15, 153, 183);
+    border: 2px solid black;
+    top: 20%;
+    left: 60%;
+    overflow: hidden;
+    flex-direction: row;
+    align-items: center;
+}
+
+.box-1, h1{
+    color: white;
+}
+
+.box-2{
+    display: flex;
+    position: absolute; /*helps move box freely without moving other objects and such*/
+    height: 100px;
+    width: auto;
+    margin: 0 auto;
+    background-color: rgb(14, 14, 155);
+    border: 1px solid rgb(255, 255, 255);
+    padding: 10px;
+    left: 10px;
+    float: left;
+    overflow: hidden;
+    flex-direction: row;
+    align-items: center;
+}
+
+.box-2, p{
+    color: white;
+    font-family: sans-serif;
+    font-size: 70px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+img {
+    float: inline-start;
+    height: 120px;
+    width: 120px;
+    margin: 0 5px;
+}
+
+.national-hockey{
+    display: flex;
+    float: left;
+    position: absolute;
+    height: 40px;
+    width: 47.2em;
+    margin: 0 auto;
+    background-color: rgb(59, 54, 54);
+    border: 1px solid white;
+    top: 198px;
+    overflow: hidden;
+    left: 10px;
+}
+
+.national-hockey, h2{
+    font-family:Verdana;
+    color: white;
+    align-items: center;
+}
+
+h2{
+    margin: 15px;
+}
