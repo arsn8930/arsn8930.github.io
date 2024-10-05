@@ -12,7 +12,7 @@
     width: 21em;
     background-color: rgb(15, 153, 183);
     border: 2px solid black;
-    top: 20%;
+    top: 20%; 
     left: 60%;
     overflow: hidden;
     flex-direction: row;
