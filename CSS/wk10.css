@@ -1,0 +1,42 @@
+body {
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    background-color: #2c3e50; /* Dark blue-gray, like the night sky */
+    color: #fdf6e3; /* Light cream, like parchment */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"], input[type="radio"] {
+    margin-bottom: 1rem;
+}
+
+button {
+    background-color: #c0392b; /* Deep red, like the Eye of Sauron */
+    color: #fdf6e3;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #a93226; /* Darker red on hover */
+}
+
+.story {
+    background-color: rgba(46, 204, 113, 0.2); /* Semi-transparent green, like the forests of Middle-earth */
+    color: #fdf6e3;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
