@@ -23,7 +23,7 @@ calculateDogAge(7);
 
 //Reverse
 function reverseNumber(x) {
-    const reversed = x.toString().split('').reverse().join('');
+    const reversed = x.toString().split('').reverse().join(''); //spilt the numbers, reverse the order, rejoin the numbers (as a string)
     document.getElementById("reverseNumber").innerHTML += `<p>Reversed number: ${reversed}</p>`;
 }
 
@@ -33,7 +33,7 @@ reverseNumber(12345);
 
 //Alphabetical order
 function alphabeticalOrder(str) {
-    const sortedStr = str.split('').sort().join('');
+    const sortedStr = str.split('').sort().join(''); //splitting the string, sorting by alphabetical order, rejoining the string
     document.getElementById("alphabeticalOrder").innerHTML += `<p>Alphabetical order: ${sortedStr}</p>`;
 }
 
@@ -43,7 +43,7 @@ alphabeticalOrder("javascript");
 
 //Capitalize first letter
 function capitalizeWords(str) {
-    const capitalized = str.replace(/\b\w/g, function(match) {
+    const capitalized = str.replace(/\b\w/g, function(match) {// /\word boundary \any character/ global flag
         return match.toUpperCase();
     });
     document.getElementById("capitalizeWords").innerHTML += `<p>Capitalized words: ${capitalized}</p>`;
