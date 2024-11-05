@@ -12,7 +12,7 @@ tellFortune(1, "Sam", "Chicago", "doctor");
 //dog age
 function calculateDogAge(dogAge) {
     const dogYears = dogAge * 7;
-    const result = `Your doggie is ${dogYears} years old in dog years!`;
+    const result = `Your dog is ${dogYears} years old in dog years!`;
     document.getElementById("dogAge").innerHTML += `<p>${result}</p>`;
 }
 
