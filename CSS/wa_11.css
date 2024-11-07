@@ -1,0 +1,23 @@
+.full-img {
+    position: relative;
+    width: 640px;
+    height: 480px;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 640px;
+    height: 480px;
+    background-color: rgba(0,0,0,0);
+}
+.thumb-bar img {
+    width: 20%;
+    float: left;
+    cursor: pointer;
+}
+
+img {
+    height: auto;
+    width: 50%;
+}
