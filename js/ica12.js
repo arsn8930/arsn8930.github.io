@@ -3,6 +3,7 @@ const jokeApiEndpoint = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,rel
 
 // defning button
 const button = document.getElementById('fetch_stuff_btn')
+
 // defining endpoint
 let apiEndpoint = jokeApiEndpoint; 
 
@@ -32,15 +33,15 @@ function getQuote(){
                 }
             }
         })
+        // error for anything
         .catch(error => {
             console.error("Error:", error)
             alert("Ooops! you fucked up. Try again...or don't")
         })
 }
 
+// actually displaying stuff
 function displayRes(quote) {
     const quoteDisplay = document.getElementById('quote_display');
     quoteDisplay.textContent = quote;
 }
-
-button.addEventListener('click', getQuote);
