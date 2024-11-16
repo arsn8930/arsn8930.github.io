@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--This is for the css file and website loadables-->
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ari's Photos portfolio website example</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="personal.js"></script>
+    </head>
+    <body>
+        <!-- This shows the logo, links to other pages, and title-->
+    <section id="home">
+        <div id="header">
+            <div class="container">
+                <nav>
+                    <img src="Images/logo.png" class="logo">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li class="dropdown">
+                            <a href="#contact" class="dropbtn">Contact</a>
+                            <div class="dropdown-content">
+                                <a href="#email">arisnyder292@gmail.com</a>
+                                <a href="#number">(973) 908 - 1876</a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header-text">
+                    <p>UX/UI Designer</p>
+                    <h1>Hi, I'm <span>Ari</span><br>From Seattle</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+        <!--This is for the about me link -->
+    <section id="about">
+        <div id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="about-col-1">
+                        <img src="Images/Aboutmepic.jpg" width="400" 
+                        height="600"> <!--photo of me-->
+                    </div>
+                    <!--about myself-->
+                    <div class="about-col-2">
+                        <h1 class="sub-title">About Me</h1>
+                        <p>My name is Ari Snyder, I am in my Junior year at the University of Colorado Boulder. 
+                            I am studying a major in history and a minor in creative tech and design.
+                            I love to take photos and I have been doing photography since I became a college student.</p>
+                        
+                        <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="opentab('Skills')">Skills</p>
+                            <p class="tab-links" onclick="opentab('Experience')">Experience</p>
+                            <p class="tab-links" onclick="opentab('Education')">Education</p>
+                        </div>
+                            <!--Skills-->
+                        <div class="tab-contents active-tab" id="Skills">
+                            <ul>
+                                <li><span>Historical Research</span><br>In-depth research and curation on various topics.</li>
+                                <li><span>Photography</span><br>I can take various types of photographs, specializing in portraits.</li>
+                                <li><span>Beginner UX/UI design</span><br>I am currently learning HTML, CSS, and JAVASCRIPT</li>
+                            </ul>
+                        </div>
+                            <!--Experience-->
+                        <div class="tab-contents" id="Experience">
+                            <ul>
+                                <li><span>Historical research/curation</span><br>Worked on a project to preserve WWII history for CGO Studios.</li>
+                                <li><span>Photography projects</span><br>Both in and out of the classroom I have made various photoshoots into books.</li>
+                                <li><span>Personal portfolio website</span><br>This website was coded by me!</li>
+                            </ul>
+                        </div>
+                            <!--Education-->
+                        <div class="tab-contents" id="Education">
+                            <ul>
+                                <li><span>In-progress Bachelors in History with a minor in CTD</span><br>at the University of Colorado Boulder</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!--Portfolio section-->
+    <section id="gallery">
+        <h2>Gallery</h2><br>
+        <!-- Container for the image gallery -->
+        <h3>The First Project</h3><br>
+        <div class="gallerycontainer1">
+            <!-- Full-width images with number text -->
+            <div class="mySlides">
+            <div class="numbertext">1 / 8</div>
+                <img src="/Images/ANU1.JPG" style="width:100%">
+            </div>
+        
+            <div class="mySlides">
+            <div class="numbertext">2 / 8</div>
+                <img src="/Images/ANU2.JPG" style="width:100%">
+            </div>
+        
+            <div class="mySlides">
+            <div class="numbertext">3 / 8</div>
+                <img src="/Images/GRA1.JPG" style="width:100%">
+            </div>
+        
+            <div class="mySlides">
+            <div class="numbertext">4 / 8</div>
+                <img src="/Images/GRA2.JPG" style="width:100%">
+            </div>
+        
+            <div class="mySlides">
+            <div class="numbertext">5 / 8</div>
+                <img src="/Images/LUK1.JPG" style="width:100%">
+            </div>
+        
+            <div class="mySlides">
+            <div class="numbertext">6 / 8</div>
+                <img src="/Images/LUK2.JPG" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+            <div class="numbertext">7 / 8</div>
+                <img src="/Images/LEN1.JPG" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+            <div class="numbertext">8 / 8</div>
+                <img src="/Images/LEN2.JPG" style="width:100%">
+            </div>
+        
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+
+        <h3>Star Wars Shoot</h3><br>
+        <div class="gallerycontainer2">
+        </div>
+
+        <h3>Portrait Highlights</h3><br>
+        <div class="gallerycontainer3">
+        </div>
+    </section>
+    </body>
+</html>
