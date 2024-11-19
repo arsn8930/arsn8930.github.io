@@ -49,9 +49,9 @@ fetch('arsn8930.github.io/Personal-Portfolio/portfolio.json')
     .then(response => {
         return response.json();
     })
-    .then(portfolio => {
-        console.log(portfolio);  // Logs the entire portfolio object to the console
-        parseData(portfolio);    // Call the function to handle the data
+    .then(gallery => {
+        console.log(gallery);  // Logs the entire portfolio object to the console
+        parseData(gallery);    // Call the function to handle the data
     })
     .catch(error => {
         console.error("Error fetching portfolio data:", error);
