@@ -45,7 +45,7 @@ function opentab(tabname){
 
 // Fetch gallery data and display it
 
-fetch('Personal-Portfolio/portfolio.json')
+fetch('arsn8930.github.io/Personal-Portfolio/portfolio.json')
     .then(response => {
         return response.json();
     })
