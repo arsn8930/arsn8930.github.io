@@ -44,19 +44,20 @@ function opentab(tabname){
 // }
 
 // Fetch gallery data and display it
-
-fetch('arsn8930.github.io/Personal-Portfolio/portfolio.json')
+function fetchGalleryData(){
+fetch('portfolio.json')
     .then(response => {
         return response.json();
     })
-    .then(gallery => {
-        console.log(gallery);  // Logs the entire portfolio object to the console
-        parseData(gallery);    // Call the function to handle the data
+    .then(portfolio => {
+        console.log(portfolio);  // Logs the entire portfolio object to the console
+        parseData(portfolio);    // Call the function to handle the data
     })
     .catch(error => {
         console.error("Error fetching portfolio data:", error);
         alert("Couldn't fetch the portfolio. Please try again.");
     });
+}
 
 function parseData(portfolio) {
     // Find the gallery section in the HTML
@@ -81,7 +82,7 @@ function parseData(portfolio) {
 
     // Create the container for the slides
     const slideContainer = document.createElement('div');
-    slideContainer.classList.add('gallery-container');
+    slideContainer.classList.add('gallerycontainer1');
 
     // Loop through the images and create slides for each
     gallery.images.forEach((image, index) => {
@@ -99,7 +100,7 @@ function parseData(portfolio) {
         const img = document.createElement('img');
         img.src = image.src; // Assuming 'src' is the path to the image
         img.alt = image.alt || ''; // Fallback to empty alt text if none exists
-        img.style.width = '100%';
+        img.style.width = '40%';
         slide.appendChild(img);
 
         // Append the slide to the container
