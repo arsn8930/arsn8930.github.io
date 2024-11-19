@@ -99,7 +99,7 @@ function parseData(portfolio) {
         const img = document.createElement('img');
         img.src = image.src; // Assuming 'src' is the path to the image
         img.alt = image.alt || ''; // Fallback to empty alt text if none exists
-        img.style.width = '30%';
+        img.style.width = '40%';
         slide.appendChild(img);
 
         // Append the slide to the container
