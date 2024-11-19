@@ -1,0 +1,17 @@
+{
+    "galleries": [
+      {
+        "title": "The First Project",
+        "images": [
+          { "src": "/Personal-Portfolio/Images/ANU1.JPG", "alt": "Image 1 description" },
+          { "src": "/Personal-Portfolio/Images/ANU2.JPG", "alt": "Image 2 description" },
+          { "src": "/Personal-Portfolio/Images/GRA1.JPG", "alt": "Image 3 description" },
+          { "src": "/Personal-Portfolio/Images/GRA2.JPG", "alt": "Image 4 description" },
+          { "src": "/Personal-Portfolio/Images/LUK1.JPG", "alt": "Image 5 description" },
+          { "src": "/Personal-Portfolio/Images/LUK2.JPG", "alt": "Image 6 description" },
+          { "src": "/Personal-Portfolio/Images/LEN1.JPG", "alt": "Image 7 description" },
+          { "src": "/Personal-Portfolio/Images/LEN2.JPG", "alt": "Image 8 description" }
+        ]
+      }
+    ]
+  }
