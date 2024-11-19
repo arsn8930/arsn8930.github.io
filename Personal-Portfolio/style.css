@@ -13,7 +13,7 @@ body{
     background: #080808;
     color: #ffffff;
 }
-
+ 
 #header{
     width: 100%;
     height: 100vh;
@@ -179,81 +179,69 @@ nav ul li a:hover::after{
 
 
 
-/* Gallery Section */
-.gallerycontainer1 {
+/* Gallery section */
+
+  /* Position the image container (needed to position the left and right arrows) */
+  .gallerycontainer1{
     position: relative;
-    width: 80%; /* Make it more flexible (adjust this value as needed) */
-    max-width: 1200px; /* Add a max-width to prevent it from getting too wide on large screens */
-    margin: 0 auto; /* Center the gallery */
-    height: 600px; /* Adjust the height as needed */
+    width: 30%;
+    height: 800px;
     overflow: hidden;
-    border-radius: 15px; /* Optional: rounded corners for the gallery container */
-}
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%);
+  }
 
-/* Ensure that images inside the gallery container are responsive */
-.gallerycontainer1 img {
-    width: 100%;  /* Make images fill the container */
-    height: auto; /* Maintain the aspect ratio */
+  .gallerycontainer1 img{
     border-radius: 15px;
-    object-fit: cover; /* Optional: makes sure the image fills the area without distortion */
-}
+  }
 
-/* The slides themselves (hidden by default) */
-.mySlides {
-    display: none;  /* Hidden by default */
-    width: 100%;  /* Ensure the slides fill the gallery container */
-}
-
-/* Add styles for next and previous buttons */
-.prev, .next {
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+  } 
+  
+  /* Next & previous buttons */
+  .prev,
+  .next {
     cursor: pointer;
     position: absolute;
-    top: 50%; /* Position buttons vertically at the center */
+    top: 40%;
+    width: auto;
     padding: 16px;
-    margin-top: -50px; /* Adjust this value as needed to center the buttons */
+    margin-top: -50px;
     color: white;
     font-weight: bold;
     font-size: 20px;
-    border-radius: 50%;  /* Circular buttons */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    z-index: 1; /* Make sure buttons are on top */
-}
-
-.prev {
-    left: 0; /* Position the "previous" button on the left */
-    border-radius: 3px 0 0 3px;
-}
-
-.next {
-    right: 0; /* Position the "next" button on the right */
     border-radius: 0 3px 3px 0;
-}
-
-/* Hover effect for buttons */
-.prev:hover, .next:hover {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Numbering text for each slide (e.g., 1/8) */
-.numbertext {
+  }
+  
+  /* Number text (1/3 etc) */
+  .numbertext {
     color: #f2f2f2;
     font-size: 12px;
     padding: 8px 12px;
     position: absolute;
     top: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Add a dark background to make the number more visible */
-}
+  }
 
-/* Styles for the gallery heading */
-.gallery, h2, h3 {
+/* Moving h2 */
+.gallery, h2, h3{
     text-align: center;
     text-decoration: underline;
     text-decoration-color: #239ec0;
-    color: #ffffff;
-}
-
-/* Additional optional styling */
-.gallery-container {
-    position: relative;
 }
