@@ -177,8 +177,6 @@ nav ul li a:hover::after{
     display: block;
 }
 
-
-
 /* Gallery section */
 
   /* Position the image container (needed to position the left and right arrows) */
@@ -244,4 +242,29 @@ nav ul li a:hover::after{
     text-align: center;
     text-decoration: underline;
     text-decoration-color: #239ec0;
+}
+
+a{
+    position: relative;
+    font-size: 24px; /* Adjust as needed */
+    text-decoration: none; /* Remove default underline */
+    color: white; /* Default text color */
+    padding-bottom: 5px; /* Space between text and the underline */
+    margin-left: 10px;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; /* Align to the bottom of the text */
+    left: 0; /* Start from the left */
+    width: 0; /* Initially set the width to 0, to make it invisible */
+    height: 3px; /* Thickness of the underline */
+    background-color:#239ec0; /* The color of the underline */
+    transition: width 0.3s ease-in-out; /* Smooth sliding transition */
+}
+
+/* When the cursor is on the button, the underline slides in */
+a:hover::after {
+    width: 75%; /* Underline width will slide in to 50% of the word's width */
 }

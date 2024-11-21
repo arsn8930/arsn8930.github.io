@@ -12,6 +12,54 @@ function opentab(tabname){
     event.currentTarget.classList.add("active-link");
     document.getElementById(tabname).classList.add("active-tab");
 }
+
+const copyLink1 = document.getElementById('copyLink1');
+const message = document.getElementById('message');
+
+//This copies the dropdown text for the contact menu
+// Check if the current page is not the gallery page
+if (!window.location.pathname.includes('gallery.html')) {
+    // Only add the event listeners if we're not on the gallery page
+    const copyPhone = document.getElementById('copyPhone');
+    const copyEmail = document.getElementById('copyEmail');
+
+    if (copyPhone) {
+        copyPhone.addEventListener('click', copyText);
+    }
+
+    if (copyEmail) {
+        copyEmail.addEventListener('click', copyText);
+    }
+} else {
+    // Log or alert if the code is running on the gallery page
+    console.log("Copy text functionality is disabled on the gallery page.");
+}
+
+// Function to copy the text (unchanged)
+function copyText(event) {
+    event.preventDefault();  // Prevent the default behavior (navigation)
+
+    const link = event.target;  // Get the clicked link
+    const textToCopy = link.textContent || link.innerText;  // Get the text content
+
+    // Create a temporary input element to copy the text
+    const tempInput = document.createElement('input');
+    document.body.appendChild(tempInput);
+    tempInput.value = textToCopy;  // Set the value to the link's text
+    tempInput.select();  // Select the text in the input
+
+    try {
+        // Try to copy the text to the clipboard
+        document.execCommand('copy');
+        document.getElementById('message').textContent = `${textToCopy} copied to clipboard!`;  // Show success message
+    } catch (err) {
+        document.getElementById('message').textContent = 'Failed to copy the link.';  // Show error message
+    }
+
+    // Remove the temporary input element after copying
+    document.body.removeChild(tempInput);
+}
+
 // let slideIndex = 1;
 // showSlides(slideIndex);
 
@@ -44,6 +92,15 @@ function opentab(tabname){
 // }
 
 // Fetch gallery data and display it
+
+// Check if the current page is the gallery page before fetching the data
+if (window.location.pathname.includes('gallery.html')) {
+    // Only fetch gallery data if we are on the gallery page
+    fetchGalleryData();
+} else {
+    console.log("Not on the gallery page, skipping JSON fetch.");
+}
+
 function fetchGalleryData(){
 fetch('portfolio.json')
     .then(response => {
@@ -56,6 +113,7 @@ fetch('portfolio.json')
     .catch(error => {
         console.error("Error fetching portfolio data:", error);
         alert("Couldn't fetch the portfolio. Please try again.");
+        throw error;
     });
 }
 
@@ -77,7 +135,7 @@ function parseData(portfolio) {
         return;
     }
 
-    // Create the gallery title dynamically
+    // // Create the gallery title dynamically
     gallerySection.innerHTML = `<h2>${gallery.title}</h2>`;  // Set the gallery title
 
     // Create the container for the slides
@@ -158,4 +216,3 @@ function addNavigationButtons(gallerySection) {
 }
 
 // Call the fetchGalleryData function to load the gallery when the page is ready
-fetchGalleryData();
