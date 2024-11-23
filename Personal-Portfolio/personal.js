@@ -214,5 +214,3 @@ function addNavigationButtons(gallerySection) {
     nextButton.onclick = () => plusSlides(1);
     gallerySection.appendChild(nextButton);
 }
-
-// Call the fetchGalleryData function to load the gallery when the page is ready
