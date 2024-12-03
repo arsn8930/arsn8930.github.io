@@ -187,18 +187,20 @@ nav ul li a:hover::after{
 /* Gallery section */
 
   /* Position the image container (needed to position the left and right arrows) */
-  .gallerycontainer1{
+  .gallerycontainer{
     position: relative;
     width: 100%;
-    height: 800px;
+    height: auto;
     overflow: hidden;
-    left: 80%;
+    left: 75%;
     top: 50%;
     transform: translate(-50%);
   }
 
-  .gallerycontainer1 img{
+  .gallerycontainer img{
     border-radius: 15px;
+    width: 50%;
+    height: auto;
   }
 
   /* Hide the images by default */
@@ -210,7 +212,7 @@ nav ul li a:hover::after{
   .prev,
   .next {
     cursor: pointer;
-    position: absolute;
+    position: fixed;
     top: 40%;
     width: auto;
     padding: 16px;

@@ -41,7 +41,6 @@ function copyText(event) {
 
     const link = event.target;  // Get the clicked link
     const textToCopy = link.textContent || link.innerText;  // Get the text content
-
     // Create a temporary input element to copy the text
     const tempInput = document.createElement('input');
     document.body.appendChild(tempInput);
@@ -59,37 +58,6 @@ function copyText(event) {
     // Remove the temporary input element after copying
     document.body.removeChild(tempInput);
 }
-
-// let slideIndex = 1;
-// showSlides(slideIndex);
-
-// // Next/previous controls
-// function plusSlides(n) {
-//     showSlides(slideIndex += n);
-// }
-
-// // Thumbnail image controls
-// function currentSlide(n) {
-//     showSlides(slideIndex = n);
-// }
-
-// function showSlides(n) {
-//     let i;
-//     let slides = document.getElementsByClassName("mySlides");
-//     let dots = document.getElementsByClassName("demo");
-//     let captionText = document.getElementById("caption");
-//     if (n > slides.length) {slideIndex = 1}
-//     if (n < 1) {slideIndex = slides.length}
-//     for (i = 0; i < slides.length; i++) {
-//         slides[i].style.display = "none";
-//     }
-//     for (i = 0; i < dots.length; i++) {
-//         dots[i].className = dots[i].className.replace(" active", "");
-//     }
-//     slides[slideIndex-1].style.display = "block";
-//     dots[slideIndex-1].className += " active";
-//     captionText.innerHTML = dots[slideIndex-1].alt;
-// }
 
 // Fetch gallery data and display it
 
@@ -117,67 +85,92 @@ fetch('portfolio.json')
     });
 }
 
+// Handle gallery data
 function parseData(portfolio) {
-    // Find the gallery section in the HTML
-    const gallerySection = document.getElementById('gallery');
-    
-    // Check if the portfolio object contains the expected structure
-    if (!portfolio || !portfolio.galleries) {
-        console.error('No galleries data found in portfolio.');
-        return;
-    }
+    const gallerySection = document.getElementById('galleryContent');
 
-    // Find the gallery named 'The First Project' (or match based on title if needed)
-    const gallery = portfolio.galleries.find(gallery => gallery.title === 'The First Project');
-    
-    if (!gallery) {
-        console.error('Gallery "The First Project" not found.');
-        return;
-    }
+    // Store all gallery data for easy reference
+    const projects = {
+        comedy: portfolio.galleries[0].title3,
+        starWars: portfolio.galleries[0].title2,
+        firstProject: portfolio.galleries[0].title,
+    };
 
-    // // Create the gallery title dynamically
-    gallerySection.innerHTML = `<h2>${gallery.title}</h2>`;  // Set the gallery title
+    const images = {
+        comedy: portfolio.galleries[0].images3,
+        starWars: portfolio.galleries[0].images2,
+        firstProject: portfolio.galleries[0].images,
+    };
+
+    const descriptions = {
+        comedy: portfolio.galleries[0].description3,
+        starWars: portfolio.galleries[0].description2,
+        firstProject: portfolio.galleries[0].description,
+    };
+
+    // Add event listeners for the buttons
+    document.getElementById('mostRecentBtn').addEventListener('click', () => {
+        loadGallery('comedy', projects, images, descriptions, gallerySection);
+    });
+
+    document.getElementById('lowLightBtn').addEventListener('click', () => {
+        loadGallery('starWars', projects, images, descriptions, gallerySection);
+    });
+
+    document.getElementById('portraitBtn').addEventListener('click', () => {
+        loadGallery('firstProject', projects, images, descriptions, gallerySection);
+    });
+}
+
+// Function to load the gallery based on the selected project
+function loadGallery(projectType, projects, images, descriptions, gallerySection) {
+    // Clear existing gallery content
+    gallerySection.innerHTML = '';
+
+    // Set the title of the project
+    const title = document.createElement('h3');
+    title.textContent = projects[projectType];
+    gallerySection.appendChild(title);
+
+    // Add project description (optional)
+    const description = document.createElement('p');
+    description.textContent = descriptions[projectType][0].p;
+    gallerySection.appendChild(description);
 
     // Create the container for the slides
     const slideContainer = document.createElement('div');
-    slideContainer.classList.add('gallerycontainer1');
+    slideContainer.classList.add('gallerycontainer');
 
     // Loop through the images and create slides for each
-    gallery.images.forEach((image, index) => {
-        // Create a div for each slide
+    images[projectType].forEach((image, index) => {
         const slide = document.createElement('div');
         slide.classList.add('mySlides');
 
         // Add the number text (e.g., 1 / 8)
         const numberText = document.createElement('div');
         numberText.classList.add('numbertext');
-        numberText.innerText = `${index + 1} / ${gallery.images.length}`;
+        numberText.innerText = `${index + 1} / ${images[projectType].length}`;
         slide.appendChild(numberText);
 
-        // Create the image element
         const img = document.createElement('img');
-        img.src = image.src; // Assuming 'src' is the path to the image
-        img.alt = image.alt || ''; // Fallback to empty alt text if none exists
-        img.style.width = '40%';
+        img.src = image.src;
+        img.alt = image.alt || '';
         slide.appendChild(img);
 
-        // Append the slide to the container
         slideContainer.appendChild(slide);
     });
 
-    // Append the slide container to the gallery section
     gallerySection.appendChild(slideContainer);
 
-    // Add navigation buttons (prev/next)
+    // Add navigation buttons (previous/next)
     addNavigationButtons(gallerySection);
 
-    // Initialize the slides (use the previously created function)
+    // Initialize slides
     initializeSlides();
 }
 
-// Initialize the slides and slider logic
+// Initialize the slides for the gallery
 let slideIndex = 1;
-
 function initializeSlides() {
     showSlides(slideIndex);
 }
@@ -187,12 +180,10 @@ function showSlides(n) {
     if (n > slides.length) { slideIndex = 1; }
     if (n < 1) { slideIndex = slides.length; }
 
-    // Hide all slides
     for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
 
-    // Show the current slide
     slides[slideIndex - 1].style.display = "block";
 }
 
@@ -200,7 +191,7 @@ function plusSlides(n) {
     showSlides(slideIndex += n);
 }
 
-// Create prev/next buttons
+// Create prev/next buttons for slide navigation
 function addNavigationButtons(gallerySection) {
     const prevButton = document.createElement('a');
     prevButton.classList.add('prev');

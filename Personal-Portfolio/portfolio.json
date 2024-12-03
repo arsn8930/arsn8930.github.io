@@ -2,15 +2,49 @@
     "galleries": [
       {
         "title": "The First Project",
+        "date": "2024-04-01",
         "images": [
-          { "src": "Images/ANU1.JPG", "alt": "Image 1 description" },
-          { "src": "Images/ANU2.JPG", "alt": "Image 2 description" },
-          { "src": "Images/GRA1.JPG", "alt": "Image 3 description" },
-          { "src": "Images/GRA2.JPG", "alt": "Image 4 description" },
-          { "src": "Images/LUK1.JPG", "alt": "Image 5 description" },
-          { "src": "Images/LUK2.JPG", "alt": "Image 6 description" },
-          { "src": "Images/LEN1.JPG", "alt": "Image 7 description" },
-          { "src": "Images/LEN2.JPG", "alt": "Image 8 description" }
+          { "src": "Images/ANU1.JPG", "alt": "Anush 1" },
+          { "src": "Images/ANU2.JPG", "alt": "Anush 2" },
+          { "src": "Images/GRA1.JPG", "alt": "Grace 1" },
+          { "src": "Images/GRA2.JPG", "alt": "Grace 2" },
+          { "src": "Images/LUK1.JPG", "alt": "Luke 1" },
+          { "src": "Images/LUK2.JPG", "alt": "Luke 2" },
+          { "src": "Images/LEN1.JPG", "alt": "Lennox 1" },
+          { "src": "Images/LEN2.JPG", "alt": "Lennox 2" }
+        ],
+        "description": [
+          {"p": "This project was my very first shoot. I gave each of the four subjects a set of emotions from which to draw personal life experiences and memories to provide real facial expressions. This project was carried out in the Spring of 2024."}
+        ],
+        "title2": "Star Wars Project",
+        "date2": "2024-09-15",
+        "images2": [
+          {"src": "Images/SW1.JPG", "alt": "StarWars 1"},
+          {"src": "Images/SW2.JPG", "alt": "StarWars 2"},
+          {"src": "Images/SW3.JPG", "alt": "StarWars 3"},
+          {"src": "Images/SW4.JPG", "alt": "StarWars 4"},
+          {"src": "Images/SW5.JPG", "alt": "StarWars 5"},
+          {"src": "Images/SW6.JPG", "alt": "StarWars 6"},
+          {"src": "Images/SW7.JPG", "alt": "StarWars 7"},
+          {"src": "Images/SW8.JPG", "alt": "StarWars 8"}
+        ],
+        "description2": [
+          {"p": "This was my second big project. I got two friends of mine to dress up as a Jedi Knight and a Sith Lord, who would then fight and pose for intense shots up by Flagstaff. Although a few of these shots might not show it there were intense stars and backdrops with the city of Boulder down below our rocky stage. This was shot in September of 2024."}
+        ],
+        "title3": "Comedy Shoot",
+        "date3": "2024-11-05",
+        "images3": [
+          {"src": "Images/Tehran1.JPG", "alt": "Tehran 1"},
+          {"src": "Images/Tehran2.JPG", "alt": "Tehran 2"},
+          {"src": "Images/Subah1.JPG", "alt": "Subah 1"},
+          {"src": "Images/Subah2.JPG", "alt": "Subah 2"},
+          {"src": "Images/Erik1.JPG", "alt": "Erik 1"},
+          {"src": "Images/Erik2.JPG", "alt": "Erik 2"},
+          {"src": "Images/All1.JPG", "alt": "All 1"},
+          {"src": "Images/All2.JPG", "alt": "All 2"}
+        ],
+        "description3": [
+          {"p": "This project was in November of 2024. The three comedians, in order, are Tehran Von Ghasri, Subhah Agarwal, and Erik Angel. They are all comedians and every year they come together under Erik's company Comedy for Peace that performes at various public houses and University campuses. Their message is that Jews, Muslims, and all others can laugh together and sit together peacfully."}
         ]
       }
     ]
