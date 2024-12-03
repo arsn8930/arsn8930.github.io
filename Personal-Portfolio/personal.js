@@ -49,16 +49,34 @@ function copyText(event) {
 
     try {
         // Try to copy the text to the clipboard
-        document.execCommand('copy');
-        document.getElementById('message').textContent = `${textToCopy} copied to clipboard!`;  // Show success message
-    } catch (err) {
-        document.getElementById('message').textContent = 'Failed to copy the link.';  // Show error message
-    }
+        document.execCommand('copy'); //not sure why this is crossed out??****
 
+        //this will enable the message
+        dropdownMessage.textContent = `${textToCopy} copied to clipboard!`;
+        dropdownMessage.style.backgroundColor = '#4CAF50';  // Green for success
+        dropdownMessage.style.display = 'block';  // Make it visible
+
+        // Hide the message after 3 seconds
+        setTimeout(() => {
+        dropdownMessage.style.display = 'none';
+        }, 3000);
+
+    }catch (err) {
+        // Show error dropdown message
+        const dropdownMessage = document.getElementById('dropdownMessage');
+        dropdownMessage.textContent = 'Failed to copy the text.';
+        dropdownMessage.style.backgroundColor = '#f44336';  // Red for error
+        dropdownMessage.style.display = 'block';  // Make it visible
+
+        // Hide the message after 3 seconds
+        setTimeout(() => {
+            dropdownMessage.style.display = 'none';
+        }, 3000);
+    }
+    
     // Remove the temporary input element after copying
     document.body.removeChild(tempInput);
 }
-
 // Fetch gallery data and display it
 
 // Check if the current page is the gallery page before fetching the data
@@ -69,23 +87,24 @@ if (window.location.pathname.includes('gallery.html')) {
     console.log("Not on the gallery page, skipping JSON fetch.");
 }
 
-function fetchGalleryData(){
-fetch('portfolio.json')
-    .then(response => {
-        return response.json();
-    })
-    .then(portfolio => {
-        console.log(portfolio);  // Logs the entire portfolio object to the console
-        parseData(portfolio);    // Call the function to handle the data
-    })
-    .catch(error => {
-        console.error("Error fetching portfolio data:", error);
-        alert("Couldn't fetch the portfolio. Please try again.");
-        throw error;
-    });
+function fetchGalleryData() {
+    fetch('portfolio.json')
+        .then(response => {
+            return response.json();
+        })
+        .then(portfolio => {
+            console.log(portfolio);  // Logs the entire portfolio object to the console
+            parseData(portfolio);    // Call the function to handle the data
+        })
+        .catch(error => {
+            console.error("Error fetching portfolio data:", error);
+            alert("Couldn't fetch the portfolio. Please try again.");
+            throw error;
+        });
 }
 
-// Handle gallery data
+let isSortedAsc = true; // Track sorting order (ascending or descending)
+
 function parseData(portfolio) {
     const gallerySection = document.getElementById('galleryContent');
 
@@ -108,7 +127,13 @@ function parseData(portfolio) {
         firstProject: portfolio.galleries[0].description,
     };
 
-    // Add event listeners for the buttons
+    const dates = {
+        comedy: portfolio.galleries[0].date3,  // Comedy Shoot
+        starWars: portfolio.galleries[0].date2, // Star Wars Project
+        firstProject: portfolio.galleries[0].date, // The First Project
+    };
+
+    // Add event listeners for the project buttons
     document.getElementById('mostRecentBtn').addEventListener('click', () => {
         loadGallery('comedy', projects, images, descriptions, gallerySection);
     });
@@ -119,6 +144,52 @@ function parseData(portfolio) {
 
     document.getElementById('portraitBtn').addEventListener('click', () => {
         loadGallery('firstProject', projects, images, descriptions, gallerySection);
+    });
+
+    // Add event listener for the sort button
+    document.getElementById('sortDateBtn').addEventListener('click', () => {
+        // Sort projects based on date
+        const sortedProjects = sortProjectsByDate(dates);
+
+        // Reorder the buttons based on the sorted projects
+        reorderButtons(sortedProjects);
+    });
+}
+
+// Function to sort projects by date
+function sortProjectsByDate(dates) {
+    const projectDates = [
+        { id: 'mostRecentBtn', date: new Date(dates.comedy) }, // Comedy Shoot
+        { id: 'lowLightBtn', date: new Date(dates.starWars) },  // Star Wars Project
+        { id: 'portraitBtn', date: new Date(dates.firstProject) }  // The First Project
+    ];
+
+    // Sort in ascending or descending order
+    projectDates.sort((a, b) => isSortedAsc ? a.date - b.date : b.date - a.date);
+
+    // Toggle sorting order for the next click
+    isSortedAsc = !isSortedAsc;
+
+    return projectDates;
+}
+
+// Function to reorder buttons in the DOM based on sorted project dates
+function reorderButtons(sortedProjects) {
+    const buttonContainer = document.querySelector('.galleryButtonContainer');
+    const sortButton = document.querySelector('#sortDateBtn');  // Select the sort button
+
+    // Log content after clearing project buttons
+    console.log('After clearing project buttons:', buttonContainer.innerHTML);
+
+    // Reappend the buttons in the sorted order
+    sortedProjects.forEach(project => {
+        const button = document.getElementById(project.id);
+        console.log(`Looking for button with ID: ${project.id}`); // Log the search attempt
+        if (button) {
+            buttonContainer.appendChild(button);
+        } else {
+            console.error(`Button with ID ${project.id} not found!`);
+        }
     });
 }
 

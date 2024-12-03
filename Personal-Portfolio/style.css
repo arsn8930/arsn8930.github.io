@@ -277,3 +277,16 @@ a::after {
 a:hover::after {
     width: 75%; /* Underline width will slide in to 50% of the word's width */
 }
+
+.galleryButtonContainer{
+    display: flex;
+    flex-direction: column; /* Align buttons vertically */
+    gap: 10px; /* Space between buttons */
+    align-items: flex-start; /* Align buttons to the left */
+    padding-left: 20px; /* Optional: add padding if needed */
+}
+
+.galleryButtonContainer button{
+    padding: 2px 5px;
+    font-size: 12px;
+}
