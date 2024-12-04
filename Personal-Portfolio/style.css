@@ -322,6 +322,11 @@ a:hover::after {
         flex-basis: 100%; /* Allow both columns to take full width */
     }
 
+    .about img{
+        width: 30%;
+        height: auto;
+    }
+
     .sub-title {
         font-size: 36px; /* Adjust subtitle font size */
     }
