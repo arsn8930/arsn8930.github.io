@@ -290,3 +290,89 @@ a:hover::after {
     padding: 2px 5px;
     font-size: 12px;
 }
+
+@media screen and (max-width: 375px) {
+    body {
+        background: #080808;
+        color: #ffffff;
+    }
+
+    .container {
+        padding: 10px 5%; /* Adjust padding for small screens */
+    }
+
+    #header {
+        height: auto; /* Allow the header to shrink */
+    }
+
+    .header-text {
+        font-size: 24px; /* Adjust header text size for smaller screens */
+    }
+
+    .header-text h1 {
+        font-size: 36px; /* Adjust font size of h1 */
+    }
+
+    .row {
+        flex-direction: column; /* Stack items vertically for small screens */
+    }
+
+    .about-col-1,
+    .about-col-2 {
+        flex-basis: 100%; /* Allow both columns to take full width */
+    }
+
+    .sub-title {
+        font-size: 36px; /* Adjust subtitle font size */
+    }
+
+    .tab-titles {
+        flex-direction: column; /* Stack tabs vertically */
+        align-items: flex-start;
+    }
+
+    .tab-links {
+        margin-right: 0;
+        font-size: 16px; /* Adjust font size */
+    }
+
+    .tab-contents ul li {
+        font-size: 14px; /* Adjust font size for list items */
+    }
+
+    #about a {
+        font-size: 14px; /* Adjust font size */
+        margin-top: -60px; /* Adjust position of the link */
+    }
+
+    .gallerycontainer {
+        position: relative;
+        width: 90%; /* Adjust width for smaller screens */
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .gallerycontainer img {
+        width: 100%; /* Make gallery images responsive */
+        height: auto;
+    }
+
+    .prev,
+    .next {
+        font-size: 16px; /* Adjust button font size */
+        padding: 12px; /* Adjust button padding */
+    }
+
+    .galleryButtonContainer button {
+        font-size: 10px; /* Smaller font size for buttons */
+    }
+
+    a {
+        font-size: 18px; /* Adjust anchor font size */
+        padding-bottom: 3px; /* Adjust underline spacing */
+    }
+
+    a:hover::after {
+        width: 50%; /* Adjust underline width */
+    }
+}
