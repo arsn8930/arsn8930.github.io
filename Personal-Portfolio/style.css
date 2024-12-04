@@ -366,6 +366,7 @@ a:hover::after {
     .next {
         font-size: 16px; /* Adjust button font size */
         padding: 12px; /* Adjust button padding */
+        position: relative;
     }
 
     .galleryButtonContainer button {
