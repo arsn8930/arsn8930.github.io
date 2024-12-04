@@ -291,7 +291,7 @@ a:hover::after {
     font-size: 12px;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 390px) {
     body {
         background: #080808;
         color: #ffffff;
@@ -315,16 +315,6 @@ a:hover::after {
 
     .row {
         flex-direction: column; /* Stack items vertically for small screens */
-    }
-
-    .about-col-1 {
-        flex-basis: 50%;
-    }
-    
-    .about-col-1 img {
-        width: 100%; /* Make the image responsive */
-        height: auto;
-        max-width: 100%; /* Prevent stretching */
     }
 
     .about-col-2 {
