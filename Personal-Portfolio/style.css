@@ -291,7 +291,7 @@ a:hover::after {
     font-size: 12px;
 }
 
-@media screen and (max-width: 415px) {
+@media screen and (max-width: 450px) {
     body {
         background: #080808;
         color: #ffffff;
