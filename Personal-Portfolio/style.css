@@ -317,14 +317,11 @@ a:hover::after {
         flex-direction: column; /* Stack items vertically for small screens */
     }
 
-    .about-col-1,
+    .about-col-1 {
+        flex-basis: 50%;
+    }
     .about-col-2 {
         flex-basis: 100%; /* Allow both columns to take full width */
-    }
-
-    .about img{
-        width: 30%;
-        height: auto;
     }
 
     .sub-title {
