@@ -320,6 +320,13 @@ a:hover::after {
     .about-col-1 {
         flex-basis: 50%;
     }
+    
+    .about-col-1 img {
+        width: 100%; /* Make the image responsive */
+        height: auto;
+        max-width: 100%; /* Prevent stretching */
+    }
+
     .about-col-2 {
         flex-basis: 100%; /* Allow both columns to take full width */
     }
@@ -344,7 +351,7 @@ a:hover::after {
 
     #about a {
         font-size: 14px; /* Adjust font size */
-        margin-top: -60px; /* Adjust position of the link */
+        margin-top: 30px; /* Move back to top button further down */
     }
 
     .gallerycontainer {
@@ -363,7 +370,16 @@ a:hover::after {
     .next {
         font-size: 16px; /* Adjust button font size */
         padding: 12px; /* Adjust button padding */
-        position: relative;
+        position: absolute; /* Fix buttons to the image */
+        top: 80%; /* Move the buttons further down */
+    }
+
+    .next {
+        right: 10px; /* Space between button and image edge */
+    }
+
+    .prev {
+        left: 10px; /* Space between button and image edge */
     }
 
     .galleryButtonContainer button {
