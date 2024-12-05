@@ -301,10 +301,6 @@ a:hover::after {
         padding: 10px 5%; /* Adjust padding for small screens */
     }
 
-    #header {
-        height: auto; /* Allow the header to shrink */
-    }
-
     .header-text {
         font-size: 24px; /* Adjust header text size for smaller screens */
     }
