@@ -94,7 +94,7 @@ function fetchGalleryData() {
         })
         .then(portfolio => {
             console.log(portfolio);  // Logs the entire portfolio object to the console
-            parseData(portfolio);    // Call the function to handle the data
+            parseData(portfolio);    // Call the function 
         })
         .catch(error => {
             console.error("Error fetching portfolio data:", error);

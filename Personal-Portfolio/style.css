@@ -318,7 +318,7 @@ a:hover::after {
     }
 
     .about-col-1{
-        width: 0px;
+        width: auto;
     }
     
     .about-col-2 {
