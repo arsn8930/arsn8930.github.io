@@ -106,7 +106,7 @@ function fetchGalleryData() {
 let isSortedAsc = true; // Track sorting order (ascending or descending)
 
 function parseData(portfolio) {
-    const gallerySection = document.getElementById('galleryContent');
+    const gallerySection = document.getElementById('gallerycontainer');
 
     // Store all gallery data for easy reference
     const projects = {
@@ -145,52 +145,6 @@ function parseData(portfolio) {
     document.getElementById('portraitBtn').addEventListener('click', () => {
         loadGallery('firstProject', projects, images, descriptions, gallerySection);
     });
-
-    // Add event listener for the sort button
-    document.getElementById('sortDateBtn').addEventListener('click', () => {
-        // Sort projects based on date
-        const sortedProjects = sortProjectsByDate(dates);
-
-        // Reorder the buttons based on the sorted projects
-        reorderButtons(sortedProjects);
-    });
-}
-
-// Function to sort projects by date
-function sortProjectsByDate(dates) {
-    const projectDates = [
-        { id: 'mostRecentBtn', date: new Date(dates.comedy) }, // Comedy Shoot
-        { id: 'lowLightBtn', date: new Date(dates.starWars) },  // Star Wars Project
-        { id: 'portraitBtn', date: new Date(dates.firstProject) }  // The First Project
-    ];
-
-    // Sort in ascending or descending order
-    projectDates.sort((a, b) => isSortedAsc ? a.date - b.date : b.date - a.date);
-
-    // Toggle sorting order for the next click
-    isSortedAsc = !isSortedAsc;
-
-    return projectDates;
-}
-
-// Function to reorder buttons in the DOM based on sorted project dates
-function reorderButtons(sortedProjects) {
-    const buttonContainer = document.querySelector('.galleryButtonContainer');
-    const sortButton = document.querySelector('#sortDateBtn');  // Select the sort button
-
-    // Log content after clearing project buttons
-    console.log('After clearing project buttons:', buttonContainer.innerHTML);
-
-    // Reappend the buttons in the sorted order
-    sortedProjects.forEach(project => {
-        const button = document.getElementById(project.id);
-        console.log(`Looking for button with ID: ${project.id}`); // Log the search attempt
-        if (button) {
-            buttonContainer.appendChild(button);
-        } else {
-            console.error(`Button with ID ${project.id} not found!`);
-        }
-    });
 }
 
 // Function to load the gallery based on the selected project
@@ -212,6 +166,10 @@ function loadGallery(projectType, projects, images, descriptions, gallerySection
     const slideContainer = document.createElement('div');
     slideContainer.classList.add('gallerycontainer');
 
+    const emptyDiv = document.createElement('div');
+    emptyDiv.classList.add('empty-div');
+    slideContainer.appendChild(emptyDiv);
+
     // Loop through the images and create slides for each
     images[projectType].forEach((image, index) => {
         const slide = document.createElement('div');
@@ -230,6 +188,10 @@ function loadGallery(projectType, projects, images, descriptions, gallerySection
 
         slideContainer.appendChild(slide);
     });
+
+    const emptyDiv2 = document.createElement('div');
+    emptyDiv2.classList.add('empty-div');
+    slideContainer.appendChild(emptyDiv2);
 
     gallerySection.appendChild(slideContainer);
 
@@ -255,7 +217,7 @@ function showSlides(n) {
         slides[i].style.display = "none";
     }
 
-    slides[slideIndex - 1].style.display = "block";
+    slides[slideIndex - 1].style.display = "flex";
 }
 
 function plusSlides(n) {

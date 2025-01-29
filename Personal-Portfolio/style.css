@@ -185,27 +185,37 @@ nav ul li a:hover::after{
 }
 
 /* Gallery section */
+#gallery{
+    height: 100vh;
+}
 
   /* Position the image container (needed to position the left and right arrows) */
   .gallerycontainer{
-    position: relative;
-    width: 100%;
+    width: calc(100% - 3em);
     height: auto;
     overflow: hidden;
-    left: 75%;
-    top: 50%;
-    transform: translate(-50%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 3em;
+  }
+
+  .gallerycontainer .empty-div{
+    flex-grow: 1;
+    display: flex;
   }
 
   .gallerycontainer img{
     border-radius: 15px;
-    width: 50%;
-    height: auto;
+    width: calc(100% - 3em);
   }
 
   /* Hide the images by default */
   .mySlides {
     display: none;
+    flex-grow: 10;
+    max-width: 500px;
+    height: auto;
   } 
   
   /* Next & previous buttons */
@@ -242,7 +252,6 @@ nav ul li a:hover::after{
     color: #f2f2f2;
     font-size: 12px;
     padding: 8px 12px;
-    position: absolute;
     top: 0;
   }
 
@@ -280,7 +289,7 @@ a:hover::after {
 
 .galleryButtonContainer{
     display: flex;
-    flex-direction: column; /* Align buttons vertically */
+    flex-direction: row; /* Align buttons vertically */
     gap: 10px; /* Space between buttons */
     align-items: flex-start; /* Align buttons to the left */
     padding-left: 20px; /* Optional: add padding if needed */
