@@ -1,0 +1,12 @@
+{
+        "imageData": [
+          { "src": "../Images/ANU1.JPG", "alt": "Anush 1" },
+          { "src": "../Images/ANU2.JPG", "alt": "Anush 2" },
+          { "src": "../Images/GRA1.JPG", "alt": "Grace 1" },
+          { "src": "../Images/GRA2.JPG", "alt": "Grace 2" },
+          { "src": "../Images/LUK1.JPG", "alt": "Luke 1" },
+          { "src": "../Images/LUK2.JPG", "alt": "Luke 2" },
+          { "src": "../Images/LEN1.JPG", "alt": "Lennox 1" },
+          { "src": "../Images/LEN2.JPG", "alt": "Lennox 2" }
+        ]
+    }

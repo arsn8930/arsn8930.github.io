@@ -22,6 +22,11 @@ body{
     background-position: center;
 }
 
+#home h1{
+    margin-left: 70px;
+    margin-top: 5px;
+}
+
 .container{
     padding: 10px 10%;
 }
@@ -298,6 +303,10 @@ a:hover::after {
 .galleryButtonContainer button{
     padding: 2px 5px;
     font-size: 12px;
+}
+
+#UXUI{
+    background-color: #239ec0;
 }
 
 @media screen and (max-width: 450px) {
