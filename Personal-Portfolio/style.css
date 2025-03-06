@@ -310,10 +310,6 @@ a:hover::after {
     font-size: 12px;
 }
 
-#UXUI{
-    background-color: #239ec0;
-}
-
 @media screen and (max-width: 450px) {
     body {
         background: #080808;
