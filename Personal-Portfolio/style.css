@@ -80,6 +80,7 @@ nav ul li a:hover::after{
     position: absolute;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    background-color: #ffffff;
     z-index: 1;
 }
 
@@ -88,10 +89,6 @@ nav ul li a:hover::after{
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
 }
 
 .dropdown:hover .dropdown-content {
@@ -191,7 +188,7 @@ nav ul li a:hover::after{
     float: right;
     margin-right: 30px;
     font-size: 15px;
-    margin-top: -120px;
+    margin-top: -150px;
 }
 
 /* Gallery section */
@@ -321,19 +318,51 @@ a:hover::after {
     }
 
     .container {
-        padding: 10px 5%; /* Adjust padding for small screens */
+        padding: 10px 5%;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding-left: 0;
+        margin-top: 10px;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    nav ul li a {
+        font-size: 18px;
+        padding: 10px 0 10px 10px;
+        width: 100%;
+        display: block;
+    }
+
+    .logo {
+        margin-bottom: 10px;
     }
 
     .header-text {
-        font-size: 24px; /* Adjust header text size for smaller screens */
+        font-size: 24px;
     }
 
     .header-text h1 {
-        font-size: 36px; /* Adjust font size of h1 */
+        font-size: 36px;
     }
 
     .row {
-        flex-direction: column; /* Stack items vertically for small screens */
+        flex-direction: column;
     }
 
     .about-col-1{
@@ -347,71 +376,71 @@ a:hover::after {
     }
 
     .about-col-2 {
-        flex-basis: 100%; /* Allow both columns to take full width */
+        flex-basis: 100%;
     }
 
     .sub-title {
-        font-size: 36px; /* Adjust subtitle font size */
+        font-size: 36px;
     }
 
     .tab-titles {
-        flex-direction: column; /* Stack tabs vertically */
+        flex-direction: column;
         align-items: flex-start;
     }
 
     .tab-links {
         margin-right: 0;
-        font-size: 16px; /* Adjust font size */
+        font-size: 16px;
     }
 
     .tab-contents ul li {
-        font-size: 14px; /* Adjust font size for list items */
+        font-size: 14px;
     }
 
     #about a {
-        font-size: 14px; /* Adjust font size */
-        margin-top: 30px; /* Move back to top button further down */
+        font-size: 14px;
+        margin-top: 30px;
     }
 
-   .mySlides {
-    display: none;
-   }
+    .mySlides {
+        display: none;
+    }
 
-   .mySlides.active, .mySlides[style*="display: flex"] {
-    display: flex;
-   }
+    .mySlides.active, .mySlides[style*="display: flex"] {
+        display: flex;
+    }
 
     .gallerycontainer img {
-        width: 100%; /* Make gallery images responsive */
+        width: 100%;
         height: auto;
     }
 
     .prev,
     .next {
-        font-size: 16px; /* Adjust button font size */
-        padding: 12px; /* Adjust button padding */
-        position: absolute; /* Fix buttons to the image */
-        top: 80%; /* Move the buttons further down */
+        font-size: 16px;
+        padding: 12px;
+        position: absolute;
+        top: 80%;
     }
 
     .next {
-        right: 10px; /* Space between button and image edge */
+        right: 10px;
     }
 
     .prev {
-        left: 10px; /* Space between button and image edge */
+        left: 10px;
     }
 
     .galleryButtonContainer button {
-        font-size: 10px; /* Smaller font size for buttons */
+        font-size: 10px;
     }
 
     a {
-        font-size: 18px; /* Adjust anchor font size */
-        padding-bottom: 3px; /* Adjust underline spacing */
+        font-size: 18px;
+        padding-bottom: 3px;
     }
 
     a:hover::after {
-        width: 50%; /* Adjust underline width */
+        width: 50%;
     }
 }
