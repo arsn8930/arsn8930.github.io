@@ -195,34 +195,77 @@ nav ul li a:hover::after{
 }
 
 /* Gallery section */
-#gallery {
-    column-count: 4; /* Adjust this value based on desired number of columns */
-    column-gap: 16px;
-  }
-  
-  .gallery-item {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    break-inside: avoid; /* Prevents items from breaking across columns */
-    margin-bottom: 16px; /* Adds space between items vertically */
-  }
-  
-  .gallery-item img {
-    width: 100%;
+#gallery{
+    height: 100vh;
+}
+
+  /* Position the image container (needed to position the left and right arrows) */
+  .gallerycontainer{
+    width: calc(100% - 3em);
     height: auto;
-    display: block;
-  }
-  
-  .gallery-item h3 {
-    padding: 10px;
-    font-size: 16px;
-    text-align: center;
-    background-color: #040404;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 3em;
   }
 
-  /* Moving h2 */
+  .gallerycontainer .empty-div{
+    flex-grow: 1;
+    display: flex;
+  }
+
+  .gallerycontainer img{
+    border-radius: 15px;
+    width: calc(100% - 3em);
+  }
+
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+    flex-grow: 10;
+    max-width: 500px;
+    height: auto;
+  } 
+  
+  /* Next & previous buttons */
+  .prev,
+  .next {
+    cursor: pointer;
+    position: fixed;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    top: 0;
+  }
+
+/* Moving h2 */
 .gallery, h2, h3{
     text-align: center;
     text-decoration: underline;
@@ -254,6 +297,23 @@ a:hover::after {
     width: 75%; /* Underline width will slide in to 50% of the word's width */
 }
 
+.galleryButtonContainer{
+    display: flex;
+    flex-direction: row; /* Align buttons vertically */
+    gap: 10px; /* Space between buttons */
+    align-items: flex-start; /* Align buttons to the left */
+    padding-left: 20px; /* Optional: add padding if needed */
+}
+
+.galleryButtonContainer button{
+    padding: 2px 5px;
+    font-size: 12px;
+}
+
+#UXUI{
+    background-color: #239ec0;
+}
+
 @media screen and (max-width: 450px) {
     body {
         background: #080808;
@@ -277,9 +337,15 @@ a:hover::after {
     }
 
     .about-col-1{
-        width: auto;
+        width: 100%;
+        height: auto;
+        max-width: 300px;
+        object-fit: cover;
+        border-radius: 15px;
+        display: block;
+        margin: 0 auto;
     }
-    
+
     .about-col-2 {
         flex-basis: 100%; /* Allow both columns to take full width */
     }

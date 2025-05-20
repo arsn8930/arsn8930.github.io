@@ -77,58 +77,164 @@ function copyText(event) {
     // Remove the temporary input element after copying
     document.body.removeChild(tempInput);
 }
+// Fetch gallery data and display it
 
-//Gallery loading 
-fetch('portfolio.json')
-  .then(response => response.json()) // Parse JSON data
-  .then(data => renderGallery(data.imageData)) // Pass imageData to the render function
-  .catch(error => console.error('Error loading JSON:', error));
-
-// Function to group images by shoot (alt)
-function groupImagesByShoot(imageData) {
-  return imageData.reduce((acc, image) => {
-    if (!acc[image.alt]) {
-      acc[image.alt] = [];
-    }
-    acc[image.alt].push(image);
-    return acc;
-  }, {});
+// Check if the current page is the gallery page before fetching the data
+if (window.location.pathname.includes('gallery.html')) {
+    // Only fetch gallery data if we are on the gallery page
+    fetchGalleryData();
+} else {
+    console.log("Not on the gallery page, skipping JSON fetch.");
 }
 
-// Function to render gallery
-function renderGallery(imageData) {
-  const galleryContainer = document.getElementById('gallery');
-  
-  // Group images by shoot (alt)
-  const groupedImages = groupImagesByShoot(imageData);
+function fetchGalleryData() {
+    fetch('portfolio.json')
+        .then(response => {
+            return response.json();
+        })
+        .then(portfolio => {
+            console.log(portfolio);  // Logs the entire portfolio object to the console
+            parseData(portfolio);    // Call the function 
+        })
+        .catch(error => {
+            console.error("Error fetching portfolio data:", error);
+            alert("Couldn't fetch the portfolio. Please try again.");
+            throw error;
+        });
+}
 
-  // Loop through grouped images and create elements for each shoot
-  Object.keys(groupedImages).forEach(shoot => {
-    // Create a section for each shoot
-    const shootSection = document.createElement('div');
-    shootSection.classList.add('shoot-section');
-    
-    // Add shoot title
-    const shootTitle = document.createElement('h2');
-    shootTitle.textContent = shoot;
-    shootSection.appendChild(shootTitle);
+let isSortedAsc = true; // Track sorting order (ascending or descending)
 
-    // Loop through images in this shoot
-    groupedImages[shoot].forEach(image => {
-      const galleryItem = document.createElement('div');
-      galleryItem.classList.add('gallery-item');
+function parseData(portfolio) {
+    const gallerySection = document.getElementById('gallerycontainer');
 
-      // Create the image element
-      const imageElement = document.createElement('img');
-      imageElement.src = image.src;
-      imageElement.alt = image.alt; // Add alt text
-      galleryItem.appendChild(imageElement);
+    // Store all gallery data for easy reference
+    const projects = {
+        comedy: portfolio.galleries[0].title3,
+        starWars: portfolio.galleries[0].title2,
+        firstProject: portfolio.galleries[0].title,
+    };
 
-      // Append the gallery item to the shoot section
-      shootSection.appendChild(galleryItem);
+    const images = {
+        comedy: portfolio.galleries[0].images3,
+        starWars: portfolio.galleries[0].images2,
+        firstProject: portfolio.galleries[0].images,
+    };
+
+    const descriptions = {
+        comedy: portfolio.galleries[0].description3,
+        starWars: portfolio.galleries[0].description2,
+        firstProject: portfolio.galleries[0].description,
+    };
+
+    const dates = {
+        comedy: portfolio.galleries[0].date3,  // Comedy Shoot
+        starWars: portfolio.galleries[0].date2, // Star Wars Project
+        firstProject: portfolio.galleries[0].date, // The First Project
+    };
+
+    // Add event listeners for the project buttons
+    document.getElementById('mostRecentBtn').addEventListener('click', () => {
+        loadGallery('comedy', projects, images, descriptions, gallerySection);
     });
 
-    // Append the shoot section to the gallery container
-    galleryContainer.appendChild(shootSection);
-  });
+    document.getElementById('lowLightBtn').addEventListener('click', () => {
+        loadGallery('starWars', projects, images, descriptions, gallerySection);
+    });
+
+    document.getElementById('portraitBtn').addEventListener('click', () => {
+        loadGallery('firstProject', projects, images, descriptions, gallerySection);
+    });
+}
+
+// Function to load the gallery based on the selected project
+function loadGallery(projectType, projects, images, descriptions, gallerySection) {
+    // Clear existing gallery content
+    gallerySection.innerHTML = '';
+
+    // Set the title of the project
+    const title = document.createElement('h3');
+    title.textContent = projects[projectType];
+    gallerySection.appendChild(title);
+
+    // Add project description (optional)
+    const description = document.createElement('p');
+    description.textContent = descriptions[projectType][0].p;
+    gallerySection.appendChild(description);
+
+    // Create the container for the slides
+    const slideContainer = document.createElement('div');
+    slideContainer.classList.add('gallerycontainer');
+
+    const emptyDiv = document.createElement('div');
+    emptyDiv.classList.add('empty-div');
+    slideContainer.appendChild(emptyDiv);
+
+    // Loop through the images and create slides for each
+    images[projectType].forEach((image, index) => {
+        const slide = document.createElement('div');
+        slide.classList.add('mySlides');
+
+        // Add the number text (e.g., 1 / 8)
+        const numberText = document.createElement('div');
+        numberText.classList.add('numbertext');
+        numberText.innerText = `${index + 1} / ${images[projectType].length}`;
+        slide.appendChild(numberText);
+
+        const img = document.createElement('img');
+        img.src = image.src;
+        img.alt = image.alt || '';
+        slide.appendChild(img);
+
+        slideContainer.appendChild(slide);
+    });
+
+    const emptyDiv2 = document.createElement('div');
+    emptyDiv2.classList.add('empty-div');
+    slideContainer.appendChild(emptyDiv2);
+
+    gallerySection.appendChild(slideContainer);
+
+    // Add navigation buttons (previous/next)
+    addNavigationButtons(gallerySection);
+
+    // Initialize slides
+    initializeSlides();
+}
+
+// Initialize the slides for the gallery
+let slideIndex = 1;
+function initializeSlides() {
+    showSlides(slideIndex);
+}
+
+function showSlides(n) {
+    let slides = document.getElementsByClassName("mySlides");
+    if (n > slides.length) { slideIndex = 1; }
+    if (n < 1) { slideIndex = slides.length; }
+
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    slides[slideIndex - 1].style.display = "flex";
+}
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+// Create prev/next buttons for slide navigation
+function addNavigationButtons(gallerySection) {
+    const prevButton = document.createElement('a');
+    prevButton.classList.add('prev');
+    prevButton.innerHTML = '&#10094;';
+    prevButton.onclick = () => plusSlides(-1);
+    gallerySection.appendChild(prevButton);
+
+    const nextButton = document.createElement('a');
+    nextButton.classList.add('next');
+    nextButton.innerHTML = '&#10095;';
+    nextButton.onclick = () => plusSlides(1);
+    gallerySection.appendChild(nextButton);
 }
