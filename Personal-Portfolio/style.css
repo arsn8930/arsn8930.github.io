@@ -373,19 +373,13 @@ a:hover::after {
         margin-top: 30px; /* Move back to top button further down */
     }
 
-    /* .gallerycontainer {
-        position: relative;
-        width: 90%; 
-        left: 50%;
-        transform: translateX(-50%);
-    } */
+   .mySlides {
+    display: none;
+   }
 
-    .mySlides img {
-        width: 100%;
-        height: auto;
-        border-radius: 15px;
-        object-fit: cover;
-    }
+   .mySlides.active, .mySlides[style*="display: flex"] {
+    display: flex;
+   }
 
     .gallerycontainer img {
         width: 100%; /* Make gallery images responsive */
