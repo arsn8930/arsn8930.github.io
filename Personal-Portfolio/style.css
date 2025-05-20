@@ -383,14 +383,19 @@ a:hover::after {
         font-size: 36px;
     }
 
-    .tab-titles {
-        flex-direction: column;
-        align-items: flex-start;
+   .tab-titles {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px; /* Adds space between tab-links */
+        margin: 20px 0 20px 0;
     }
 
     .tab-links {
         margin-right: 0;
         font-size: 16px;
+        margin-bottom: 0;
+        white-space: nowrap; /* Prevents text from wrapping */
     }
 
     .tab-contents ul li {
