@@ -386,7 +386,7 @@ a:hover::after {
     .tab-titles {
         flex-direction: column;
         align-items: flex-start;
-        gap: 20px; /* Add space between tab links */
+        gap: 50px; /* Add space between tab links */
         margin-bottom: 20px; /* Optional: extra space below titles */
     }
 
