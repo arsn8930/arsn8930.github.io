@@ -1,4 +1,3 @@
-
 var tablinks = document.getElementsByClassName("tab-links");
 var tabcontents = document.getElementsByClassName("tab-contents");
 
@@ -147,7 +146,7 @@ function parseData(portfolio) {
     });
 }
 
-// Function to load the gallery based on the selected project
+// Function to load the gallery in a masonry layout
 function loadGallery(projectType, projects, images, descriptions, gallerySection) {
     // Clear existing gallery content
     gallerySection.innerHTML = '';
@@ -157,84 +156,26 @@ function loadGallery(projectType, projects, images, descriptions, gallerySection
     title.textContent = projects[projectType];
     gallerySection.appendChild(title);
 
-    // Add project description (optional)
+    // Add project description
     const description = document.createElement('p');
     description.textContent = descriptions[projectType][0].p;
     gallerySection.appendChild(description);
 
-    // Create the container for the slides
-    const slideContainer = document.createElement('div');
-    slideContainer.classList.add('gallerycontainer');
+    // Create the masonry container
+    const masonry = document.createElement('div');
+    masonry.className = 'gallery-masonry';
 
-    const emptyDiv = document.createElement('div');
-    emptyDiv.classList.add('empty-div');
-    slideContainer.appendChild(emptyDiv);
-
-    // Loop through the images and create slides for each
-    images[projectType].forEach((image, index) => {
-        const slide = document.createElement('div');
-        slide.classList.add('mySlides');
-
-        // Add the number text (e.g., 1 / 8)
-        const numberText = document.createElement('div');
-        numberText.classList.add('numbertext');
-        numberText.innerText = `${index + 1} / ${images[projectType].length}`;
-        slide.appendChild(numberText);
+    // Loop through the images and create masonry items
+    images[projectType].forEach((image) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-masonry-item';
 
         const img = document.createElement('img');
         img.src = image.src;
         img.alt = image.alt || '';
-        slide.appendChild(img);
 
-        slideContainer.appendChild(slide);
+        item.appendChild(img);
+        masonry.appendChild(item);
     });
-
-    const emptyDiv2 = document.createElement('div');
-    emptyDiv2.classList.add('empty-div');
-    slideContainer.appendChild(emptyDiv2);
-
-    gallerySection.appendChild(slideContainer);
-
-    // Add navigation buttons (previous/next)
-    addNavigationButtons(gallerySection);
-
-    // Initialize slides
-    initializeSlides();
-}
-
-// Initialize the slides for the gallery
-let slideIndex = 1;
-function initializeSlides() {
-    showSlides(slideIndex);
-}
-
-function showSlides(n) {
-    let slides = document.getElementsByClassName("mySlides");
-    if (n > slides.length) { slideIndex = 1; }
-    if (n < 1) { slideIndex = slides.length; }
-
-    for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-
-    slides[slideIndex - 1].style.display = "flex";
-}
-
-function plusSlides(n) {
-    showSlides(slideIndex += n);
-}
-
-// Create prev/next buttons for slide navigation
-function addNavigationButtons(gallerySection) {
-    const prevButton = document.createElement('a');
-    prevButton.classList.add('prev');
-    prevButton.innerHTML = '&#10094;';
-    prevButton.onclick = () => plusSlides(-1);
-    gallerySection.appendChild(prevButton);
-
-    const nextButton = document.createElement('a');
-    nextButton.classList.add('next');
-    nextButton.innerHTML = '&#10095;';
-    nextButton.onclick = () => plusSlides(1);
-    gallerySection.appendChild(nextButton);
+    gallerySection.appendChild(masonry);
 }

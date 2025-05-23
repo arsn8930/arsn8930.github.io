@@ -311,6 +311,59 @@ a:hover::after {
     background-color: #239ec0;
 }
 
+/* Masonry Gallery Styles */
+.gallery-masonry {
+    column-count: 3;
+    column-gap: 1em;
+    width: 100%;
+    max-width: 1200px;
+    margin: 2em auto;
+    padding: 0;
+}
+
+@media (max-width: 900px) {
+    .gallery-masonry {
+        column-count: 2;
+    }
+}
+@media (max-width: 600px) {
+    .gallery-masonry {
+        column-count: 1;
+    }
+}
+
+.gallery-masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1em;
+    background: #181818;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-masonry-item img {
+    width: 100%;
+    display: block;
+    border-radius: 12px 12px 0 0;
+}
+
+.gallery-masonry-caption {
+    padding: 0.5em 1em 1em 1em;
+    color: #fff;
+    font-size: 1em;
+    text-align: left;
+}
+
+/* Hide old slide/gallery styles on gallery page */
+#gallerycontainer .gallerycontainer,
+#gallerycontainer .mySlides,
+#gallerycontainer .prev,
+#gallerycontainer .next {
+    display: none !important;
+}
+
 @media screen and (max-width: 450px) {
     body {
         background: #080808;
