@@ -370,6 +370,10 @@ a:hover::after {
         color: #ffffff;
     }
 
+    #header {
+        background-position: left center;
+    }
+
     .container {
         padding: 10px 5%;
     }
