@@ -112,24 +112,27 @@ function parseData(portfolio) {
         comedy: portfolio.galleries[0].title3,
         starWars: portfolio.galleries[0].title2,
         firstProject: portfolio.galleries[0].title,
+        event1: portfolio.galleries[0].title4,
+        event2: portfolio.galleries[0].title5,
+        engagement1: portfolio.galleries[0].title6,
     };
 
     const images = {
         comedy: portfolio.galleries[0].images3,
         starWars: portfolio.galleries[0].images2,
         firstProject: portfolio.galleries[0].images,
+        event1: portfolio.galleries[0].images4,
+        event2: portfolio.galleries[0].images5,
+        engagement1: portfolio.galleries[0].images6,
     };
 
     const descriptions = {
         comedy: portfolio.galleries[0].description3,
         starWars: portfolio.galleries[0].description2,
         firstProject: portfolio.galleries[0].description,
-    };
-
-    const dates = {
-        comedy: portfolio.galleries[0].date3,  // Comedy Shoot
-        starWars: portfolio.galleries[0].date2, // Star Wars Project
-        firstProject: portfolio.galleries[0].date, // The First Project
+        event1: portfolio.galleries[0].description4,
+        event2: portfolio.galleries[0].description5,
+        engagement1: portfolio.galleries[0].description6,
     };
 
     // Add event listeners for the project buttons
@@ -143,6 +146,18 @@ function parseData(portfolio) {
 
     document.getElementById('portraitBtn').addEventListener('click', () => {
         loadGallery('firstProject', projects, images, descriptions, gallerySection);
+    });
+
+    document.getElementById('Event1Btn').addEventListener('click', () => {
+        loadGallery('event1', projects, images, descriptions, gallerySection);
+    });
+
+    document.getElementById('Event2Btn').addEventListener('click', () => {
+        loadGallery('event2', projects, images, descriptions, gallerySection);
+    });
+
+    document.getElementById('Engagement1Btn').addEventListener('click', () => {
+        loadGallery('engagement1', projects, images, descriptions, gallerySection);
     });
 }
 
@@ -179,3 +194,26 @@ function loadGallery(projectType, projects, images, descriptions, gallerySection
     });
     gallerySection.appendChild(masonry);
 }
+
+// Back to Top Button functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('backToTopBtn');
+    if (!btn) return;
+
+    // Show button when scrolled down
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 200) {
+            btn.style.display = 'block';
+        } else {
+            btn.style.display = 'none';
+        }
+    });
+
+    // Scroll to top on click
+    btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Hide initially
+    btn.style.display = 'none';
+});
