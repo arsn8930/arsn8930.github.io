@@ -1,3 +1,4 @@
+/* --- Main Styles --- */
 *{
     margin: 0;
     padding: 0;
@@ -113,7 +114,7 @@ nav ul li a:hover::after{
 /*----about section----*/
 
 #about{
-    min-height: 100vh;
+    min-height: 0;
     padding: 80px 0;
     color: #7e979d;
 }
@@ -225,43 +226,6 @@ nav ul li a:hover::after{
     height: auto;
   } 
   
-  /* Next & previous buttons */
-  .prev,
-  .next {
-    cursor: pointer;
-    position: fixed;
-    top: 40%;
-    width: auto;
-    padding: 16px;
-    margin-top: -50px;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    -webkit-user-select: none;
-  }
-  
-  /* Position the "next button" to the right */
-  .next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-  }
-  
-  /* On hover, add a black background color with a little bit see-through */
-  .prev:hover,
-  .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  
-  /* Number text (1/3 etc) */
-  .numbertext {
-    color: #f2f2f2;
-    font-size: 12px;
-    padding: 8px 12px;
-    top: 0;
-  }
-
 /* Moving h2 */
 .gallery, h2, h3{
     text-align: center;
@@ -271,7 +235,7 @@ nav ul li a:hover::after{
 
 a{
     position: relative;
-    font-size: 24px; /* Adjust as needed */
+    font-size: 20px; /* Adjust as needed */
     text-decoration: none; /* Remove default underline */
     color: white; /* Default text color */
     padding-bottom: 5px; /* Space between text and the underline */
@@ -307,10 +271,6 @@ a:hover::after {
     font-size: 12px;
 }
 
-#UXUI{
-    background-color: #239ec0;
-}
-
 /* Masonry Gallery Styles */
 .gallery-masonry {
     column-count: 3;
@@ -319,17 +279,6 @@ a:hover::after {
     max-width: 1200px;
     margin: 2em auto;
     padding: 0;
-}
-
-@media (max-width: 900px) {
-    .gallery-masonry {
-        column-count: 2;
-    }
-}
-@media (max-width: 600px) {
-    .gallery-masonry {
-        column-count: 1;
-    }
 }
 
 .gallery-masonry-item {
@@ -440,8 +389,206 @@ a:hover::after {
     width: 75%;
 }
 
-/* Responsive: stack buttons on small screens */
-@media (max-width: 600px) {
+
+/* Footer styles */
+footer {
+    width: 100%;
+    background: #181818;
+    color: #fff;
+    padding: 12px 0 40px 0;
+    margin-top: 16px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0;
+    padding: 0 0 0 32px; /* Increased left padding for more space */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 8px;
+}
+
+.footer-container p {
+    margin: 0 0 6px 0;
+    padding-left: 0;
+}
+
+.footer-container .contacts {
+    display: block;         /* Not flex, just block */
+    margin: 0 0 10px 0;
+    gap: 0;                 /* Remove gap if present */
+}
+
+.footer-container img {
+    width: 80px;                /* Set a fixed width for the logo */
+    height: auto;               /* Maintain aspect ratio */
+    margin-bottom: 10px;        /* Space below logo */
+}
+
+.footer-container .contacts {
+    width: 40px;
+    height: auto;
+    margin: 0 0 10px 0;         /* Space below logo */
+    display: block;
+}
+
+.footer-container .contacts a {
+    display: inline-block;  /* Keep links on the same line if needed */
+    margin-left: 0;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    padding-bottom: 2px;
+    white-space: nowrap;    /* Prevent phone number from breaking */
+}
+
+.footer-container .contacts a::after {
+    left: 0;
+}
+
+/* Mobile layout and typography */
+@media screen and (max-width: 450px) {    
+    body {        
+        background: #080808;        
+        color: #ffffff;    
+    }    
+
+    #header {        
+        background-position: left center;    
+    }    
+
+    .container {        
+        padding: 10px 5%;    
+    } 
+
+    nav {        
+        flex-direction: column;        
+        align-items: flex-start;        
+        width: 100%;    
+    }    
+
+    nav ul {        
+        display: flex;        
+        flex-direction: column;        
+        align-items: flex-start;        
+        width: 100%;        
+        padding-left: 0;        
+        margin-top: 10px;    
+    }  
+
+    nav ul li {        
+        display: block;        
+        margin: 10px 0;        
+        width: 100%;    
+    } 
+
+    nav ul li a {        
+        font-size: 18px;        
+        padding: 10px 0 10px 10px;        
+        width: 100%;        
+        display: block;    
+    }    
+
+    .logo {        
+        margin-bottom: 10px;    
+    }    
+
+    .header-text {        
+        font-size: 24px;    
+    }    
+
+    .header-text h1 {        
+        font-size: 36px;    
+    }    
+
+    .row {        
+        flex-direction: column;    
+    }   
+     
+    .about-col-1{        
+        width: 100%;        
+        height: auto;        
+        max-width: 300px;        
+        object-fit: cover;        
+        border-radius: 15px;        
+        display: block;        
+        margin: 0 auto;    
+    }    
+
+    .about-col-2 {        
+        flex-basis: 100%;    
+    }    
+    .sub-title {        
+        font-size: 36px;    
+    }   
+
+    .tab-titles {        
+        flex-direction: column;        
+        align-items: flex-start;        
+        gap: 30px; /* Add space between tab links */        
+        margin-bottom: 20px; /* Optional: extra space below titles */   
+    }    
+
+    .tab-links {        /* margin-right: 0; */        
+        font-size: 16px;    
+    }   
+
+    .tab-contents ul li {        
+        font-size: 14px;    
+    }    
+
+    #about a {        
+        font-size: 14px;        
+        margin-top: 30px;    
+    }    
+    
+    .mySlides {        
+        display: none;    
+    }    
+
+    .mySlides.active, .mySlides[style*="display: flex"] {        
+        display: flex;    
+    }  
+
+    .gallerycontainer img {        
+        width: 100%;        
+        height: auto;    
+    }    
+
+    .prev, .next {        
+        font-size: 16px;        
+        padding: 12px;        
+        position: absolute;        
+        top: 80%;    
+    }    
+
+    .next {        
+        right: 10px;    
+    }    
+
+    .prev {        
+        left: 10px;    
+    }    
+
+    .galleryButtonContainer button {        
+        font-size: 10px;    
+    }   
+
+    a {        
+        font-size: 18px;        
+        padding-bottom: 3px;    
+    }  
+
+    a:hover::after {        
+        width: 50%;    
+    }
+
+    /* Gallery masonry columns: 3 -> 2 -> 1 */
+    .gallery-masonry {
+        column-count: 1;
+    }
     #gallery-buttons {
         flex-direction: column;
         align-items: center;
@@ -452,6 +599,12 @@ a:hover::after {
         font-size: 1em;
         padding: 0 0 5px 0;
     }
-}
 
-@media screen and (max-width: 450px) {    body {        background: #080808;        color: #ffffff;    }    #header {        background-position: left center;    }    .container {        padding: 10px 5%;    }    nav {        flex-direction: column;        align-items: flex-start;        width: 100%;    }    nav ul {        display: flex;        flex-direction: column;        align-items: flex-start;        width: 100%;        padding-left: 0;        margin-top: 10px;    }    nav ul li {        display: block;        margin: 10px 0;        width: 100%;    }    nav ul li a {        font-size: 18px;        padding: 10px 0 10px 10px;        width: 100%;        display: block;    }    .logo {        margin-bottom: 10px;    }    .header-text {        font-size: 24px;    }    .header-text h1 {        font-size: 36px;    }    .row {        flex-direction: column;    }    .about-col-1{        width: 100%;        height: auto;        max-width: 300px;        object-fit: cover;        border-radius: 15px;        display: block;        margin: 0 auto;    }    .about-col-2 {        flex-basis: 100%;    }    .sub-title {        font-size: 36px;    }    .tab-titles {        flex-direction: column;        align-items: flex-start;        gap: 30px; /* Add space between tab links */        margin-bottom: 20px; /* Optional: extra space below titles */    }    .tab-links {        /* margin-right: 0; */        font-size: 16px;    }    .tab-contents ul li {        font-size: 14px;    }    #about a {        font-size: 14px;        margin-top: 30px;    }    .mySlides {        display: none;    }    .mySlides.active, .mySlides[style*="display: flex"] {        display: flex;    }    .gallerycontainer img {        width: 100%;        height: auto;    }    .prev,    .next {        font-size: 16px;        padding: 12px;        position: absolute;        top: 80%;    }    .next {        right: 10px;    }    .prev {        left: 10px;    }    .galleryButtonContainer button {        font-size: 10px;    }    a {        font-size: 18px;        padding-bottom: 3px;    }    a:hover::after {        width: 50%;    }}
+    /* Footer responsive styles */
+    .footer-container {
+        padding: 0 0 0 10px; /* Less left padding on small screens */
+    }
+    .footer-container .contacts {
+        gap: 6px;
+    }
+}
