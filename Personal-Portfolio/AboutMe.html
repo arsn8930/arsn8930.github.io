@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <!--This is for the css file and website loadables-->
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ari's Photos portfolio website</title>
+        <link rel="stylesheet" href="style.css">
+        <!-- Font Awesome CDN for social icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <a href="Arisphotosportfoliowebsite.HTML" class="back-btn">&larr; Back</a>
+        <section id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="about-col-1">
+                        <img src="Images/Aboutmepic.jpg"> <!--photo of me-->
+                    </div>
+                    <!--about myself-->
+                    <div class="about-col-2">
+                        <h1 class="sub-title">About Me</h1>
+                        <p>My name is Ari Snyder, I am a Senior at the University of Colorado Boulder finishing a major in history and a minor in creative tech and design.
+                            I love to take photos and I have been doing photography and learning to design since I became a college student.</p>
+                        
+                        <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="opentab('Skills')">Skills</p>
+                            <p class="tab-links" onclick="opentab('Experience')">Experience</p>
+                            <p class="tab-links" onclick="opentab('Education')">Education</p>
+                        </div>
+                        <!--Skills-->
+                        <div class="tab-contents active-tab" id="Skills">
+                            <ul>
+                                <li><span>Photography</span><br>I can take various types of photographs, specializing in portraits.</li>
+                                <li><span>Adobe Creative Suite</span><br>I have experience using Photoshop and Lightroom for photo editing and design.</li>
+                                <li><span>Figma</span><br>I have experience using Figma to design logos, wireframes, and prototypes.</li>
+                                <li><span>Social Media</span><br>I have experience using Instagram for marketing and promotion.</li>
+                            </ul>
+                        </div>
+                        <!--Experience-->
+                        <div class="tab-contents" id="Experience">
+                            <ul>
+                                <li><span>Portrait projects</span><br>Both in and out of the classroom I have made various photoshoots and been paid for my services.</li>
+                                <li><span>Event Projects</span><br>Outside of the classroom I have worked with the CU Fencing team and the CU Boulder Hillel for event photography.</li>
+                                <li><span>Personal portfolio website</span><br>This website was coded by me!</li>
+                            </ul>
+                        </div>
+                        <!--Education-->
+                        <div class="tab-contents" id="Education">
+                            <ul>
+                                <li><span>In-progress Bachelors in History with a minor in CTD</span><br>at the University of Colorado Boulder</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- FOOTER (match gallery.html style) -->
+        <footer>
+            <div class="footer-container">
+                <img src="Images/portfolio_logo.png" alt="">
+                <p>&copy; 2023 Ari Snyder. All rights reserved.</p>
+                <p>Designed by Ari Snyder</p>
+                <div class="contacts">
+                    <a href="#home"> Interested? Contact me!</a>
+                </div>
+            </div>
+        </footer>
+        <script src="personal.js"></script>
+    </body>
+</html>
