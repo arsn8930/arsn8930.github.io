@@ -692,16 +692,13 @@ footer {
     nav ul li a::after {
         display: none;
     }
-    /* Move social links into sidebar if needed */
     .social-links {
         margin: 18px 0 0 18px;
         order: 3;
     }
-    /* Make sure the rest of the page doesn't overlap */
-    #header > .container {
-        display: flex;
-        flex-direction: row;
-        height: 100vh;
-        align-items: stretch;
-    }
+}
+
+/* Remove underline effect from Back buttons */
+.back-btn::after {
+    display: none !important;
 }
