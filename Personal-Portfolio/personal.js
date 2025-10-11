@@ -238,3 +238,22 @@ function showSuccessMessage(e) {
             }
         });
 }
+
+// Hamburger menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburger-menu');
+    const navUl = document.querySelector('nav ul');
+
+    if (hamburger && navUl) {
+        hamburger.addEventListener('click', function() {
+            navUl.classList.toggle('show');
+        });
+
+        // Optional: Hide menu when a link is clicked (for better UX)
+        navUl.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navUl.classList.remove('show');
+            });
+        });
+    }
+});
