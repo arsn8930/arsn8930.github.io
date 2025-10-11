@@ -217,3 +217,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hide initially
     btn.style.display = 'none';
 });
+
+function showSuccessMessage(e) {
+        // Prevent default form redirect
+        e.preventDefault();
+
+        // Send form data using fetch
+        const form = e.target;
+        const data = new FormData(form);
+
+        fetch(form.action, {
+            method: "POST",
+            body: data,
+        }).then(response => {
+            if (response.ok) {
+                document.getElementById("success-message").style.display = "block";
+                form.reset();
+            } else {
+                alert("There was a problem submitting the form.");
+            }
+        });
+}
