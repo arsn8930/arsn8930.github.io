@@ -218,26 +218,35 @@ document.addEventListener('DOMContentLoaded', function() {
     btn.style.display = 'none';
 });
 
-function showSuccessMessage(e) {
-        // Prevent default form redirect
-        e.preventDefault();
-
-        // Send form data using fetch
-        const form = e.target;
-        const data = new FormData(form);
-
-        fetch(form.action, {
-            method: "POST",
-            body: data,
-        }).then(response => {
-            if (response.ok) {
-                document.getElementById("success-message").style.display = "block";
-                form.reset();
-            } else {
-                alert("There was a problem submitting the form.");
-            }
+// Contact form AJAX submission and success message
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.querySelector('.contact-form');
+    const successMsg = document.getElementById('success-message');
+    if (contactForm && successMsg) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (response.ok) {
+                    contactForm.reset();
+                    successMsg.style.display = 'block';
+                    successMsg.textContent = 'You successfully submitted the contact form!';
+                } else {
+                    successMsg.style.display = 'block';
+                    successMsg.textContent = 'There was a problem sending your message.';
+                }
+            })
+            .catch(() => {
+                successMsg.style.display = 'block';
+                successMsg.textContent = 'There was a problem sending your message.';
+            });
         });
-}
+    }
+});
 
 // Hamburger menu functionality
 document.addEventListener('DOMContentLoaded', function() {
