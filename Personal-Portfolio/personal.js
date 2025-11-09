@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // On resize, collapse menu if switching to larger viewport
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
+            if (window.innerWidth > 800) {
                 navUl.classList.remove('show');
                 hamburger.setAttribute('aria-expanded', 'false');
             }
