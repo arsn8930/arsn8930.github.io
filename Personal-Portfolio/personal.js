@@ -106,92 +106,110 @@ let isSortedAsc = true; // Track sorting order (ascending or descending)
 
 function parseData(portfolio) {
     const gallerySection = document.getElementById('gallerycontainer');
+    const buttonsContainer = document.getElementById('gallery-buttons');
 
-    // Store all gallery data for easy reference
-    const projects = {
-        comedy: portfolio.galleries[0].title3,
-        starWars: portfolio.galleries[0].title2,
-        firstProject: portfolio.galleries[0].title,
-        event1: portfolio.galleries[0].title4,
-        event2: portfolio.galleries[0].title5,
-        engagement1: portfolio.galleries[0].title6,
-    };
+    if (!portfolio || !portfolio.galleries || !portfolio.galleries.length) {
+        console.error('Portfolio JSON missing or malformed');
+        return;
+    }
 
-    const images = {
-        comedy: portfolio.galleries[0].images3,
-        starWars: portfolio.galleries[0].images2,
-        firstProject: portfolio.galleries[0].images,
-        event1: portfolio.galleries[0].images4,
-        event2: portfolio.galleries[0].images5,
-        engagement1: portfolio.galleries[0].images6,
-    };
+    const galleryObj = portfolio.galleries[0];
 
-    const descriptions = {
-        comedy: portfolio.galleries[0].description3,
-        starWars: portfolio.galleries[0].description2,
-        firstProject: portfolio.galleries[0].description,
-        event1: portfolio.galleries[0].description4,
-        event2: portfolio.galleries[0].description5,
-        engagement1: portfolio.galleries[0].description6,
-    };
+    // Collect projects by checking keys: title, title2, title3, ...
+    const suffixes = ['', '2', '3', '4', '5', '6', '7']; // extend if needed
+    const projects = [];
 
-    // Add event listeners for the project buttons
-    document.getElementById('mostRecentBtn').addEventListener('click', () => {
-        loadGallery('comedy', projects, images, descriptions, gallerySection);
+    suffixes.forEach(suf => {
+        const tKey = 'title' + suf;
+        const imgsKey = 'images' + suf;
+        const descKey = 'description' + suf;
+        const dateKey = 'date' + suf;
+
+        if (galleryObj[tKey]) {
+            projects.push({
+                title: galleryObj[tKey],
+                date: galleryObj[dateKey] || '',
+                images: galleryObj[imgsKey] || [],
+                description: (galleryObj[descKey] && galleryObj[descKey][0] && galleryObj[descKey][0].p) ? galleryObj[descKey][0].p : ''
+            });
+        }
     });
 
-    document.getElementById('lowLightBtn').addEventListener('click', () => {
-        loadGallery('starWars', projects, images, descriptions, gallerySection);
-    });
+    // Hide gallery content until a button is clicked
+    if (gallerySection) {
+        gallerySection.classList.remove('visible');
+        gallerySection.innerHTML = ''; // ensure empty
+    }
 
-    document.getElementById('portraitBtn').addEventListener('click', () => {
-        loadGallery('firstProject', projects, images, descriptions, gallerySection);
-    });
+    // Build filter buttons dynamically (replace any existing content)
+    if (buttonsContainer) {
+        buttonsContainer.innerHTML = ''; // clear old buttons
+        projects.forEach((proj, idx) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'gallery-filter-btn';
+            btn.textContent = proj.title;
+            btn.addEventListener('click', () => {
+                // mark active button
+                buttonsContainer.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
 
-    document.getElementById('Event1Btn').addEventListener('click', () => {
-        loadGallery('event1', projects, images, descriptions, gallerySection);
-    });
+                // load and show selected project
+                loadGallery(proj, gallerySection);
+            });
+            buttonsContainer.appendChild(btn);
+        });
+    } else {
+        console.warn('#gallery-buttons not found — buttons will not be created.');
+    }
 
-    document.getElementById('Event2Btn').addEventListener('click', () => {
-        loadGallery('event2', projects, images, descriptions, gallerySection);
-    });
-
-    document.getElementById('Engagement1Btn').addEventListener('click', () => {
-        loadGallery('engagement1', projects, images, descriptions, gallerySection);
-    });
+    // Do NOT auto-load any gallery — user must click a button
 }
 
-// Function to load the gallery in a masonry layout
-function loadGallery(projectType, projects, images, descriptions, gallerySection) {
+// Function to load the gallery in a masonry layout (accepts a project object)
+function loadGallery(project, gallerySection) {
+    if (!gallerySection) {
+        console.error('Gallery container not found');
+        return;
+    }
+
+    // Make gallery visible
+    gallerySection.classList.add('visible');
+
     // Clear existing gallery content
     gallerySection.innerHTML = '';
 
-    // Set the title of the project
-    const title = document.createElement('h3');
-    title.textContent = projects[projectType];
-    gallerySection.appendChild(title);
+    // Optional title (uncomment if you want to show)
+    // if (project.title) {
+    //     const titleEl = document.createElement('h3');
+    //     titleEl.textContent = project.title;
+    //     gallerySection.appendChild(titleEl);
+    // }
 
-    // Add project description
-    const description = document.createElement('p');
-    description.textContent = descriptions[projectType][0].p;
-    gallerySection.appendChild(description);
+    // Description
+    if (project.description) {
+        const descEl = document.createElement('p');
+        descEl.textContent = project.description;
+        gallerySection.appendChild(descEl);
+    }
 
-    // Create the masonry container
+    // Create masonry container
     const masonry = document.createElement('div');
     masonry.className = 'gallery-masonry';
 
-    // Loop through the images and create masonry items
-    images[projectType].forEach((image) => {
+    // Add images (project.images is expected to be an array of {src, alt})
+    project.images.forEach((imgObj) => {
         const item = document.createElement('div');
         item.className = 'gallery-masonry-item';
 
         const img = document.createElement('img');
-        img.src = image.src;
-        img.alt = image.alt || '';
+        img.src = imgObj.src;
+        img.alt = imgObj.alt || '';
 
         item.appendChild(img);
         masonry.appendChild(item);
     });
+
     gallerySection.appendChild(masonry);
 }
 
@@ -266,3 +284,79 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Testimonials slider functionality (replaced to generate dots to match testimonial count)
+const testimonials = [
+    {
+        text: "Ari is professional, consistent, and has an incredible ability to capture genuine emotion and deliver stunning photos fast. He is also extremely respectful of peoples comfortability with having their photos taken at events, and always works with the flow of programs.",
+        author: "— Shira Finke."
+    },
+    {
+        text: "Ari knew exactly what he was doing when it came to posing and lighting. Our pictures came out incredible!",
+        author: "— Rosie Benenson."
+    },
+    {
+        text: "Great quality of photos! Ari was very professional and easy to work with. He made sure to capture all the important moments and people at my party. Highly recommend!",
+        author: "— Haven Harris"
+    }
+];
+
+let index = 0;
+const textEl = document.getElementById("testimonial-text");
+const authorEl = document.getElementById("testimonial-author");
+const testimonialBox = document.querySelector(".testimonial");
+const dotsContainer = document.querySelector(".testimonial-dots");
+
+// Build dot controls to match number of testimonials
+let dots = [];
+if (dotsContainer) {
+    dotsContainer.innerHTML = ''; // clear any existing
+    testimonials.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `Show testimonial ${i + 1}`);
+        dotsContainer.appendChild(dot);
+    });
+    dots = Array.from(dotsContainer.querySelectorAll('.dot'));
+}
+
+// Show a testimonial by index
+function showTestimonial(i) {
+    if (!testimonialBox) return;
+    testimonialBox.classList.remove("show");
+
+    setTimeout(() => {
+        if (textEl) textEl.textContent = testimonials[i].text || '';
+        if (authorEl) authorEl.textContent = testimonials[i].author || '';
+
+        testimonialBox.classList.add("show");
+
+        if (dots.length) {
+            dots.forEach((dot, idx) => dot.classList.toggle("active", idx === i));
+        }
+    }, 300);
+}
+
+function nextTestimonial() {
+    index = (index + 1) % testimonials.length;
+    showTestimonial(index);
+}
+
+// Wire up dot clicks (if dots exist)
+if (dots.length) {
+    dots.forEach((dot, i) => {
+        dot.addEventListener("click", () => {
+            index = i;
+            showTestimonial(index);
+        });
+    });
+}
+
+// Initialize slider (only if DOM elements exist)
+if (testimonials.length) {
+    showTestimonial(index);
+    if (testimonials.length > 1) {
+        setInterval(nextTestimonial, 8000);
+    }
+}

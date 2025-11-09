@@ -12,10 +12,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        <img src="Images/Background.png" alt="Background" class="page-bg">
         <!-- This shows the logo, links to other pages, and title-->
         <section id="home">
-            <div id="header">
+            <img src="Images/Background.JPG" alt="Background" class="page-bg">
+            <div id="taskbar">
                 <div class="container">
                     <nav>
                         <img src="Images/portfolio_logo.png" class="logo">
@@ -30,7 +30,7 @@
                             <li><a href="AboutMe.html">About</a></li>
                             <li><a href="gallery.html">Gallery</a></li>
                             <li class="dropdown">
-                                <a href="contactMe.html">Let's Connect!</a>
+                                <a href="contactMe.html">Click Here to Book!</a>
                             </li>
                             <li>
                                 <div class="social-links" style="margin-top:18px;">
@@ -48,13 +48,44 @@
                         Text copied to clipboard!
                     </div>
                     <div class="header-text">
-                        <h1>Hi, I'm <span>Ari</span><br>From Seattle</h1>
-                        <p>Designer, Photographer</p>
+                        <h1>Hi, I'm <span>Ari,</span><br>A Photographer From Seattle</h1><br>
+                        <h2>Portraits • Events • Editorial</h2>
+                        <p>Seattle & Boulder — Student-friendly pricing</p>
                     </div>
                 </div>
             </div>
         </section>
-        <div id="testimonialcontainer"></div>
+        <section id="featured-work">
+            <div class="featured-container">
+                <h2>Featured Work</h2>
+                <div class="featured-grid">
+                    <img src="/Personal-Portfolio/Images/Individual Portraits/FP6.jpg" alt="Featured photo 1">
+                    <img src="/Personal-Portfolio/Images/Couple Portraits/R&J9.JPG" alt="Featured photo 2">
+                    <img src="/Personal-Portfolio/Images/Events/CFP21.JPG" alt="Featured photo 3">
+                    <img src="/Personal-Portfolio/Images/Events/FF1.JPG" alt="Featured photo 4">
+                    <img src="/Personal-Portfolio/Images/Family Portraits/PatLouAlo3.jpg" alt="Featured photo 5">
+                </div>
+            </div>
+        </section>
+
+        <section id="rotating-testimonials">
+        <div class="testimonial-wrapper">
+            <h2>What Clients Say</h2>
+
+            <div class="testimonial">
+                <p id="testimonial-text">Loading testimonial…</p>
+                <span id="testimonial-author"></span>
+            </div>
+
+            <div class="testimonial-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+        </section>
+        <!-- Back to Top Button -->
+        <button id="backToTopBtn" title="Back to top">&#8679; Top</button>
         <footer>
             <div class="footer-container">
                 <img src="../Personal-Portfolio/Images/portfolio_logo.png" alt="">

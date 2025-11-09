@@ -2,7 +2,7 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     box-sizing: border-box;
 }
 
@@ -11,25 +11,43 @@ html{
 }
 
 body{
-    background: #080808;
+    background: #3d3d3d;
     color: #ffffff;
 }
  
-#header{
+#taskbar{
     width: 100%;
     height: 100vh;
 }
 
-#header img{
+#taskbar img{
     width: 180px;
     height: auto;
     background-size: cover;
     background-position: center;
 }
 
-#home h1{
-    margin-left: 120px;
-    margin-top: 5px;
+/* Center the header text block */
+.header-text {
+    margin-top: 10%;
+    text-align: center;
+}
+
+/* Keep your sizes but make spacing consistent */
+.header-text h1 {
+    font-size: 60px;
+    line-height: 1.2;
+}
+
+.header-text h2 {
+    margin-top: 15px;
+    font-size: 30px;
+}
+
+/* Paragraph centered too */
+.header-text p {
+    margin-top: 10px;
+    font-size: 18px;
 }
 
 .container{
@@ -45,6 +63,16 @@ nav{
 
 .logo{
     width: 140px;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap; /* allow items to wrap to next line instead of overflowing */
 }
 
 nav ul li {
@@ -320,6 +348,11 @@ a:hover::after {
     display: none !important;
 }
 
+/* visible helper (used by JS) */
+#gallerycontainer.visible {
+    display: block;
+}
+
 /* Back to Top Button Styles */
 #backToTopBtn {
     position: fixed;
@@ -556,6 +589,93 @@ footer {
     padding-right: 4vw;
 }
 
+/* --- Testimonials --- */
+/* --- Rotating Testimonials Section --- */
+#rotating-testimonials {
+    padding: 70px 10%;
+    text-align: center;
+}
+
+#rotating-testimonials h2 {
+    font-size: 30px; /* was 38px — reduced 4px */
+    margin-bottom: 35px;
+}
+
+.testimonial {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 18px; /* was 22px — reduced 4px */
+    line-height: 1.5;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    min-height: 120px;
+}
+
+.testimonial.show {
+    opacity: 1;
+}
+
+#testimonial-author {
+    display: block;
+    margin-top: 15px;
+    font-size: 15px; /* was 18px — reduced 3px */
+    opacity: 0.7;
+}
+
+.testimonial-dots {
+    margin-top: 20px;
+}
+
+.testimonial-dots .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #666;
+    margin: 0 5px;
+    transition: transform 0.18s ease, background-color 0.18s ease, opacity 0.18s;
+    opacity: 0.9;
+    cursor: pointer;
+    border: none; /* if JS creates <button>, remove default button styles */
+}
+
+.testimonial-dots .dot:focus {
+    outline: 2px solid rgba(35,158,192,0.18);
+    outline-offset: 3px;
+}
+
+.testimonial-dots .dot.active {
+    background-color: #239ec0;
+    transform: scale(1.25);
+    opacity: 1;
+}
+
+/* --- Featured Work Section --- */
+#featured-work {
+    padding: 60px 10%;
+    text-align: center;
+}
+
+#featured-work h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.featured-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* slightly reduced gap */
+    flex-wrap: wrap;
+}
+
+.featured-grid img {
+    width: 20%;         /* was 30% — smaller thumbnails */
+    max-width: 300px;   /* was 350px — smaller cap */
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+
 /* --- Mobile Styles --- */
 @media (max-width: 800px) {
     .container {
@@ -619,6 +739,36 @@ footer {
         font-size: 18px;
         padding: 8px 18px;
         display: block;
+    }
+
+    /* Ensure nav list is a flexible row and can wrap so items (social links) don't get hidden */
+    nav ul {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap; /* allow items to wrap to next line instead of overflowing */
+    }
+
+    /* push social icons to the right on wide layouts */
+    nav ul .social-item {
+        margin-left: auto;
+    }
+
+    /* Social links styling */
+    .social-links {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+    }
+    .social-links a {
+        color: #239ec0;
+        font-size: 1.4rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
 
     /* Hide hamburger on desktop */
@@ -690,5 +840,38 @@ footer {
     #gallerycontainer {
         padding-left: 2vw;
         padding-right: 2vw;
+    }
+}
+
+/* Ensure social icons align vertically with nav items (overrides inline margin-top) */
+nav ul li .social-links,
+nav .social-links {
+    margin-top: 0 !important;      /* override inline style margins */
+    display: flex;
+    align-items: center;           /* vertical center icons */
+    gap: 12px;
+}
+
+/* Make icon links truly centered inside their buttons/anchors */
+nav .social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    color: #239ec0; /* keep existing color */
+}
+
+/* If you use a specific list item to push socials right */
+nav ul .social-item {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+/* Mobile: when the menu stacks, keep socials aligned with menu items */
+@media (max-width: 800px) {
+    nav ul .social-item {
+        margin-left: 0;
+        padding-left: 12px;
     }
 }

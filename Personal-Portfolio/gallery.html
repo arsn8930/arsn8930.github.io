@@ -7,40 +7,39 @@
         <title>Ari's Photos portfolio website</title>
         <link rel="stylesheet" href="style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <div id="gallery_header">
-                <div class="container">
-                    <nav>
-                        <img src="Images/portfolio_logo.png" class="logo">
-                        <!-- Hamburger menu for mobile -->
-                        <div class="hamburger" id="hamburger-menu">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <ul>
-                            <li><a href="Arisphotosportfoliowebsite.HTML">Home</a></li>
-                            <li><a href="AboutMe.html">About</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
-                            <li class="dropdown">
-                                <a href="contactMe.html">Let's Connect!</a>
-                            </li>
-                            <li>
+            <div class="container">
+                <nav>
+                    <img src="Images/portfolio_logo.png" class="logo" alt="Ari logo">
+                    <!-- Hamburger menu for mobile -->
+                    <div class="hamburger" id="hamburger-menu" aria-hidden="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <ul>
+                        <li><a href="Arisphotosportfoliowebsite.HTML">Home</a></li>
+                        <li><a href="AboutMe.html">About</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li class="dropdown"><a href="contactMe.html">Click Here to Book!</a></li>
+                        <li>
                                 <div class="social-links" style="margin-top:18px;">
-                                    <a href="https://www.instagram.com/ari.photography24/" target="_blank" aria-label="Instagram" style="color:#239ec0; margin-right:18px; font-size:1.6em;">
+                                    <a href="https://www.instagram.com/ari.photography24/" target="_blank" aria-label="Instagram" style="color:#239ec0; font-size:1.6em;">
                                         <i class="fa fa-instagram"></i>
                                     </a>
                                     <a href="https://www.linkedin.com/in/ari-snyder-648033188/" target="_blank" aria-label="LinkedIn" style="color:#239ec0; font-size:1.6em;">
                                         <i class="fa fa-linkedin"></i>
                                     </a>
                                 </div>
-                            </li>
-                        </ul>
-                    </nav>
-                    </div>
-                </div>
+                        </li>
+                    </ul>
+                </nav>
             </div>
+        </div>
         <h2 style="text-align:center; margin-top: 1.5em; text-decoration: underline; text-decoration-color: #239ec0;">Gallery</h2>
         <!-- Add a small dialogue above the gallery filter buttons -->
         <p style="text-align:center; margin-top: 1.5em; margin-bottom: 0.5em; color: #239ec0; font-size: 1.1em;">
@@ -48,12 +47,10 @@
         </p>
         <!-- Add gallery filter buttons -->
         <div id="gallery-buttons">
-            <button id="portraitBtn">My First Project (Full portrait collection coming soon)</button>
-            <button id="lowLightBtn">Star Wars project</button>
-            <button id="mostRecentBtn">Comedians</button>
-            <button id="Event2Btn">Fencing (New events coming soon)</button>
-            <button id="Engagement1Btn">An Engagement</button>
-            <button id="Event1Btn">CU Fencing Formal</button>
+            <button id="portraitBtn"></button>
+            <button id="lowLightBtn"></button>
+            <button id="mostRecentBtn"></button>
+            <button id="Event1Btn"></button>
         </div>
         <div id="gallerycontainer"></div>
 
@@ -67,7 +64,7 @@
                 <p>&copy; 2023 Ari Snyder. All rights reserved.</p>
                 <p>Designed by Ari Snyder</p>
                 <div class="contacts">
-                    <a href="contactMe.html"> Interested? Contact me!</a>
+                    <a href="contactMe.html">Interested? Contact me!</a>
                 </div>
             </div>
         </footer>
