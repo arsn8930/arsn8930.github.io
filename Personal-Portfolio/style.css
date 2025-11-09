@@ -592,6 +592,25 @@ footer {
     padding-right: 4vw;
 }
 
+/* Small extra spacing between main vertical sections */
+section {
+    margin-top: 12px;
+    margin-bottom: 18px;
+}
+
+/* --- Featured Work Section (slightly increased vertical spacing) */
+#featured-work {
+    padding: 36px 10%; /* was 30px 10% */
+    margin-bottom: 10px;
+}
+
+/* --- Rotating Testimonials (small extra spacing) */
+#rotating-testimonials {
+    padding: 80px 10%; /* was 70px 10% */
+    margin-top: 8px;
+    margin-bottom: 14px;
+}
+
 /* --- Testimonials --- */
 /* --- Rotating Testimonials Section --- */
 #rotating-testimonials {
