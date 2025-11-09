@@ -17,7 +17,10 @@ body{
  
 #taskbar{
     width: 100%;
-    height: 100vh;
+    /* avoid forcing a full viewport height which creates a large gap */
+    height: auto;          /* was 100vh */
+    min-height: 60vh;     /* keeps a tall hero without pushing content too far down */
+    padding-bottom: 20px;
 }
 
 #taskbar img{
@@ -29,7 +32,7 @@ body{
 
 /* Center the header text block */
 .header-text {
-    margin-top: 10%;
+    margin-top: 6%; /* reduced so featured section sits closer */
     text-align: center;
 }
 
@@ -652,7 +655,7 @@ footer {
 
 /* --- Featured Work Section --- */
 #featured-work {
-    padding: 60px 10%;
+    padding: 30px 10%; /* reduced top padding to close gap */
     text-align: center;
 }
 
@@ -669,12 +672,11 @@ footer {
 }
 
 .featured-grid img {
-    width: 20%;         /* was 30% — smaller thumbnails */
-    max-width: 300px;   /* was 350px — smaller cap */
+    width: 20%;
+    max-width: 300px;
     border-radius: 10px;
     object-fit: cover;
 }
-
 
 /* --- Mobile Styles --- */
 @media (max-width: 800px) {
@@ -829,6 +831,16 @@ footer {
     #gallerycontainer {
         padding-left: 2vw;
         padding-right: 2vw;
+    }
+
+    .featured-grid img {
+        width: 45%;      /* larger thumbnails on mobile */
+        max-width: 48vw; /* keep them responsive */
+    }
+
+    /* Optional: reduce hero min-height on small screens to tighten spacing */
+    #taskbar {
+        min-height: 48vh;
     }
 }
 
