@@ -272,15 +272,46 @@ document.addEventListener('DOMContentLoaded', function() {
     const navUl = document.querySelector('nav ul');
 
     if (hamburger && navUl) {
-        hamburger.addEventListener('click', function() {
-            navUl.classList.toggle('show');
+        // Ensure menu is collapsed on load
+        navUl.classList.remove('show');
+        hamburger.setAttribute('aria-expanded', 'false');
+
+        hamburger.addEventListener('click', function(e) {
+            const isShown = navUl.classList.toggle('show');
+            hamburger.setAttribute('aria-expanded', String(isShown));
+            e.stopPropagation();
         });
 
-        // Optional: Hide menu when a link is clicked (for better UX)
+        // Hide menu when a link is clicked (for better UX)
         navUl.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navUl.classList.remove('show');
+                hamburger.setAttribute('aria-expanded', 'false');
             });
+        });
+
+        // Close when clicking outside the nav
+        document.addEventListener('click', (e) => {
+            if (!navUl.contains(e.target) && !hamburger.contains(e.target)) {
+                navUl.classList.remove('show');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                navUl.classList.remove('show');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // On resize, collapse menu if switching to larger viewport
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navUl.classList.remove('show');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
         });
     }
 });
